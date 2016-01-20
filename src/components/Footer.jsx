@@ -1,6 +1,9 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {connect} from 'react-redux';
 
-export default React.createClass({
+export const Footer = React.createClass({
+    mixins: [PureRenderMixin],
     getPeople: function () {
         return this.props.people || [];
     },
@@ -13,15 +16,15 @@ export default React.createClass({
             </div>
             {this.getPeople().map(person =>
                 [
-                    <div key={person.name + "1"} className="col-md-1">
+                    <div key={person.get('name') + "1"} className="col-md-1">
                         <p>
-                            <img className="img-circle" alt={person.name} title={person.name}
-                                 src={"img/" + person.avatar}/>
+                            <img className="img-circle" alt={person.get('name')} title={person.get('name')}
+                                 src={"img/" + person.get('avatar')}/>
                         </p>
                     </div>,
-                    <div key={person.name + "2"} className="col-md-3">
-                        <p>{person.name}</p>
-                        <p>{person.period}</p>
+                    <div key={person.get('name') + "2"} className="col-md-3">
+                        <p>{person.get('name')}</p>
+                        <p>{person.get('period')}</p>
                     </div>
                 ]
             )}
@@ -29,4 +32,11 @@ export default React.createClass({
     }
 });
 
+function mapStateToProps(state) {
+    return {
+        people: state.get('people')
+    };
+}
+
+export const FooterContainer = connect(mapStateToProps)(Footer);
 
