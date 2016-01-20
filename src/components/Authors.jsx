@@ -1,6 +1,9 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {connect} from 'react-redux';
 
-export default React.createClass({
+export const Authors = React.createClass({
+    mixins: [PureRenderMixin],
     getPeople: function () {
         return this.props.people || [];
     },
@@ -13,13 +16,21 @@ export default React.createClass({
             </thead>
             <tbody>
             {this.getPeople().map(person =>
-                <tr key={person.name}>
-                    <td><img className="img-circle" alt={person.name} title={person.name} src={"img/" + person.avatar}/></td>
-                    <td>{person.name}</td>
-                    <td>{person.period}</td>
+                <tr key={person.get('name')}>
+                    <td><img className="img-circle" alt={person.get('name')} title={person.get('name')} src={"img/" + person.get('avatar')}/></td>
+                    <td>{person.get('name')}</td>
+                    <td>{person.get('period')}</td>
                 </tr>
             )}
             </tbody>
         </table>;
     }
 });
+
+function mapStateToProps(state) {
+    return {
+        people: state.get('people')
+    };
+}
+export const AuthorsContainer = connect(mapStateToProps)(Authors);
+

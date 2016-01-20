@@ -1,27 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Authors from './components/Authors';
-import Footer from './components/Footer';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducer';
+import {List} from 'immutable';
+import {AuthorsContainer} from './components/Authors';
+import {FooterContainer} from './components/Footer';
 
-const people = [
-    {
-        "name": "Ragnar Bergvik",
-        "period": "May 2011 - Jan 2015",
-        "avatar": "ragnar.jpg"
-    },
-    {
-        "name": "Karl Øgaard",
-        "period": "Feb 2015 -",
-        "avatar": "karl.jpg"
+const store = createStore(reducer);
+
+store.dispatch({
+    type: 'SET_STATE',
+    state: {
+        people: [
+            {
+                "name": "Ragnar Bergvik",
+                "period": "May 2011 - Jan 2015",
+                "avatar": "ragnar.jpg"
+            },
+            {
+                "name": "Karl Øgaard",
+                "period": "Feb 2015 -",
+                "avatar": "karl.jpg"
+            }
+        ],
+        data: []
     }
-];
+});
 
 ReactDOM.render(
-    <Authors people={people} />,
+    <Provider store={store}>
+        <AuthorsContainer/>
+    </Provider>,
     document.getElementById('app')
 );
 
 ReactDOM.render(
-    <Footer people={people} />,
+    <Provider store={store}>
+        <FooterContainer/>
+    </Provider>,
     document.getElementById('footer')
 );
