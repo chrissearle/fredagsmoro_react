@@ -5,7 +5,7 @@ import {fromJS} from 'immutable';
 
 const {renderIntoDocument, scryRenderedDOMComponentsWithTag} = React.addons.TestUtils;
 
-describe('Footer', () => {
+describe('Authors', () => {
 
     const people = [
         {
