@@ -6,24 +6,24 @@ export default React.createClass({
     },
     render: function () {
         return <footer className="footer">
-            <div class="col-md-4">
+            <div className="col-md-4">
                 <p>
                     Ba Dum Tish
                 </p>
             </div>
             {this.getPeople().map(person =>
-                <div key={person.name}>
-                    <div className="col-md-1">
+                [
+                    <div key={person.name + "1"} className="col-md-1">
                         <p>
                             <img className="img-circle" alt={person.name} title={person.name}
                                  src={"img/" + person.avatar}/>
                         </p>
-                    </div>
-                    <div className="col-md-3">
+                    </div>,
+                    <div key={person.name + "2"} className="col-md-3">
                         <p>{person.name}</p>
                         <p>{person.period}</p>
                     </div>
-                </div>
+                ]
             )}
         </footer>;
     }
