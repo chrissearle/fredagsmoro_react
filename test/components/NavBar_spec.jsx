@@ -13,7 +13,7 @@ describe('NavBar', () => {
             <NavBar/>
         );
 
-        const navbar =  scryRenderedDOMComponentsWithTag(component, 'nav');
+        const navbar = scryRenderedDOMComponentsWithTag(component, 'nav');
         expect(navbar.length).to.equal(1);
     });
 
@@ -36,6 +36,19 @@ describe('NavBar', () => {
         expect(archive.href).to.equal("/#/archive/");
     });
 
-    // TODO
-    // Link to latest when given data
+    it('has a latest link', () => {
+        const data = {
+            year: "2016",
+            month: "12",
+            date: "07"
+        };
+
+        const component = renderIntoDocument(
+            <NavBar latest={fromJS(data)}/>
+        );
+
+        const latest = findDOMNode(component.refs.latest);
+        expect(latest.href).to.equal("/#/2016/12/07/");
+        expect(latest.textContent).to.equal("December 7, 2016");
+    });
 });

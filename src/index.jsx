@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {Router,Route,hashHistory } from 'react-router';
-import reducer from './reducer';
 import {List} from 'immutable';
+import $ from 'jquery';
+import reducer from './reducer';
 import {App} from './components/App';
 import {AuthorsContainer} from './components/Authors';
 import {FooterContainer} from './components/Footer';
@@ -12,23 +13,17 @@ import {NavBarContainer} from './components/NavBar';
 
 const store = createStore(reducer);
 
-store.dispatch({
-    type: 'SET_STATE',
-    state: {
-        people: [
-            {
-                "name": "Ragnar Bergvik",
-                "period": "May 2011 - Jan 2015",
-                "avatar": "ragnar.jpg"
-            },
-            {
-                "name": "Karl Øgaard",
-                "period": "Feb 2015 -",
-                "avatar": "karl.jpg"
+// Quick Fix - since the data is static
+$.get("/people.json", function (people) {
+    $.get("/data.json", function (data) {
+        store.dispatch({
+            type: 'SET_STATE',
+            state: {
+                people: people,
+                data: data
             }
-        ],
-        data: []
-    }
+        });
+    });
 });
 
 const routes = <Route component={App}>
