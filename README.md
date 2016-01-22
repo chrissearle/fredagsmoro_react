@@ -7,4 +7,3 @@ Fredagsmoro - Samlet av Karl Øgaard - Arkiv http://fredagsmoro.chrissearle.org/
 ToDo:
 
 * Create image list view (and all sub components)
-* Create archive view (and all sub components)
