@@ -5,8 +5,6 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import {fromJS} from 'immutable';
 
-// TODO - Latest
-
 export const NavBar = React.createClass({
     mixins: [PureRenderMixin],
     getLatest: function () {
