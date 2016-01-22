@@ -1,6 +1,9 @@
 import {fromJS, Map} from 'immutable';
 import moment from 'moment';
 
+export function entryTitle(year, month, day) {
+    return moment(year + "-" + month + "-" + day, "YYYY-MM-DD hh:mm:ss").format("LL")
+}
 export function getLatestFromState(state) {
     if (state.has('data')) {
         let year = state.get('data').sortBy(year => -year.get('name')).first();
@@ -11,7 +14,7 @@ export function getLatestFromState(state) {
             year: year.get('name'),
             month: month.get('name'),
             date: date.get('name'),
-            title: moment(year.get('name') + "-" + month.get('name') + "-" + date.get('name'), "YYYY-MM-DD hh:mm:ss").format("LL"),
+            title: entryTitle(year.get('name'), month.get('name'), date.get('name')),
             link: year.get("name") + "/" + month.get("name") + "/" + date.get("name") + "/"
         });
     }
