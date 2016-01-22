@@ -2,34 +2,27 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {IndexLink,Link} from 'react-router';
 import {connect} from 'react-redux';
-import moment from 'moment';
-import {fromJS} from 'immutable';
+import {getLatestFromState} from '../helpers'
 
 export const NavBar = React.createClass({
     mixins: [PureRenderMixin],
-    getLatest: function () {
-        return this.props.latest;
-    },
     getTitle: function () {
-        let latest = this.getLatest();
-
-        if (latest) {
-            return moment(latest.get('year') + "-" + latest.get('month') + "-" + latest.get('date'), "YYYY-MM-DD hh:mm:ss").format("LL");
-        }
-
-        return "";
+        return this.props.latest.get('title');
     },
     getLink: function () {
-        let latest = this.getLatest();
-
-        if (latest) {
-            return "/#/" + latest.get("year") + "/" + latest.get("month") + "/" + latest.get("date") + "/";
-        }
-
-        return "/#/";
+        return "/#/" + this.props.latest.get('link');
     },
     render: function () {
-        let latest = this.getLatest();
+        var latestNav = '';
+
+        if (this.getTitle()) {
+            latestNav = [
+                <p key="latestTitle" className="navbar-text">Latest:</p>,
+                <ul key="latestLink" className="nav navbar-nav">
+                    <li><a ref="latestNav" href={this.getLink()}>{ this.getTitle() }</a></li>
+                </ul>
+            ];
+        }
 
         return <nav className="navbar navbar-inverse navbar-fixed-top ng-scope" role="navigation">
             <div className="container">
@@ -44,12 +37,7 @@ export const NavBar = React.createClass({
                     <a className="navbar-brand" href="/#/">Fredagsmoro</a>
                 </div>
                 <div className="collapse navbar-collapse" id=" bs-example-navbar-collapse-1">
-                    <p className="navbar-text">Latest:</p>
-                    <ul className="nav navbar-nav">
-                        <li><a ref="latest"
-                               href={this.getLink()}>{this.getTitle()}</a>
-                        </li>
-                    </ul>
+                    {latestNav}
                     <p className="navbar-text">Archive:</p>
                     <ul className="nav navbar-nav">
                         <li><a ref="archive" href="/#/archive/">Browse by date</a></li>
@@ -61,21 +49,9 @@ export const NavBar = React.createClass({
 });
 
 function mapStateToProps(state) {
-    if (state.has('data')) {
-        let year = state.get('data').sortBy(year => -year.get('name')).first();
-        let month = year.get('tree').sortBy(month => -month.get('name')).first();
-        let date = month.get('tree').sortBy(date => -date.get('name')).first();
-
-        return {
-            latest: fromJS({
-                year: year.get('name'),
-                month: month.get('name'),
-                date: date.get('name')
-            })
-        };
-    }
-
-    return {};
+    return {
+        latest: getLatestFromState(state)
+    };
 }
 
 export const NavBarContainer = connect(mapStateToProps)(NavBar);

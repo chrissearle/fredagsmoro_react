@@ -7,7 +7,7 @@ import {List} from 'immutable';
 import $ from 'jquery';
 import reducer from './reducer';
 import {App} from './components/App';
-import {AuthorsContainer} from './components/Authors';
+import {FrontPageContainer} from './components/FrontPage';
 import {FooterContainer} from './components/Footer';
 import {NavBarContainer} from './components/NavBar';
 
@@ -27,9 +27,9 @@ $.get("/people.json", function (people) {
 });
 
 const routes = <Route component={App}>
-    <Route path="/" component={AuthorsContainer}/>
-    <Route path="/archive" component={AuthorsContainer}/> // TODO
-    <Route path="/:year/:month/:day" component={AuthorsContainer}/> // TODO
+    <Route path="/" component={FrontPageContainer}/>
+    <Route path="/archive" component={FrontPageContainer}/> // TODO
+    <Route path="/:year/:month/:day" component={FrontPageContainer}/> // TODO
 </Route>;
 
 ReactDOM.render(

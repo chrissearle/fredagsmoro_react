@@ -6,6 +6,5 @@ Fredagsmoro - Samlet av Karl Øgaard - Arkiv http://fredagsmoro.chrissearle.org/
 
 ToDo:
 
-* Complete frontpage view (latest link and header)
 * Create image list view (and all sub components)
 * Create archive view (and all sub components)
