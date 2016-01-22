@@ -9,6 +9,7 @@ import reducer from './reducer';
 import {App} from './components/App';
 import {FrontPageContainer} from './components/FrontPage';
 import {ArchiveContainer} from './components/Archive';
+import {ShowContainer} from './components/Show';
 import {FooterContainer} from './components/Footer';
 import {NavBarContainer} from './components/NavBar';
 
@@ -30,7 +31,7 @@ $.get("/people.json", function (people) {
 const routes = <Route component={App}>
     <Route path="/" component={FrontPageContainer}/>
     <Route path="/archive" component={ArchiveContainer}/>
-    <Route path="/:year/:month/:day" component={FrontPageContainer}/> // TODO
+    <Route path="/:year/:month/:day" component={ShowContainer}/>
 </Route>;
 
 ReactDOM.render(
