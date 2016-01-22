@@ -2,7 +2,7 @@ import React from 'react/addons';
 import {findDOMNode} from 'react-dom'
 import {NavBar} from '../../src/components/NavBar';
 import {expect} from 'chai';
-import {fromJS} from 'immutable';
+import {fromJS,Map} from 'immutable';
 
 const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} = React.addons.TestUtils;
 
@@ -10,7 +10,7 @@ describe('NavBar', () => {
 
     it('renders a navbar', () => {
         const component = renderIntoDocument(
-            <NavBar/>
+            <NavBar latest={Map()}/>
         );
 
         const navbar = scryRenderedDOMComponentsWithTag(component, 'nav');
@@ -19,7 +19,7 @@ describe('NavBar', () => {
 
     it('has a home link', () => {
         const component = renderIntoDocument(
-            <NavBar/>
+            <NavBar latest={Map()}/>
         );
 
         const brandLink = scryRenderedDOMComponentsWithClass(component, 'navbar-brand');
@@ -29,7 +29,7 @@ describe('NavBar', () => {
 
     it('has an archive link', () => {
         const component = renderIntoDocument(
-            <NavBar />
+            <NavBar latest={Map()}/>
         );
 
         const archive = findDOMNode(component.refs.archive);
@@ -40,14 +40,16 @@ describe('NavBar', () => {
         const data = {
             year: "2016",
             month: "12",
-            date: "07"
+            date: "07",
+            title: "December 7, 2016",
+            link: "2016/12/07/"
         };
 
         const component = renderIntoDocument(
             <NavBar latest={fromJS(data)}/>
         );
 
-        const latest = findDOMNode(component.refs.latest);
+        const latest = findDOMNode(component.refs.latestNav);
         expect(latest.href).to.equal("/#/2016/12/07/");
         expect(latest.textContent).to.equal("December 7, 2016");
     });
