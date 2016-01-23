@@ -22,7 +22,7 @@ export const Date = React.createClass({
     },
     render: function () {
         return <td>
-            <a href={"/#/" + this.getYear() + "/" + this.getMonth() + "/" + this.getDate() + "/"}>
+            <a href={"/" + this.getYear() + "/" + this.getMonth() + "/" + this.getDate() + "/"}>
                 {this.getTitle()}
             </a>
             &nbsp;

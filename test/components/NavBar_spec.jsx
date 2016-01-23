@@ -24,7 +24,7 @@ describe('NavBar', () => {
 
         const brandLink = scryRenderedDOMComponentsWithClass(component, 'navbar-brand');
         expect(brandLink.length).to.equal(1);
-        expect(brandLink[0].href).to.equal("/#/");
+        expect(brandLink[0].href).to.equal("/");
     });
 
     it('has an archive link', () => {
@@ -33,7 +33,7 @@ describe('NavBar', () => {
         );
 
         const archive = findDOMNode(component.refs.archive);
-        expect(archive.href).to.equal("/#/archive/");
+        expect(archive.href).to.equal("/archive/");
     });
 
     it('has a latest link', () => {
@@ -50,7 +50,7 @@ describe('NavBar', () => {
         );
 
         const latest = findDOMNode(component.refs.latestNav);
-        expect(latest.href).to.equal("/#/2016/12/07/");
+        expect(latest.href).to.equal("/2016/12/07/");
         expect(latest.textContent).to.equal("December 7, 2016");
     });
 });

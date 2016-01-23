@@ -11,7 +11,7 @@ export const FrontPage = React.createClass({
         return this.props.latest.get('title');
     },
     getLink: function () {
-        return "/#/" + this.props.latest.get('link');
+        return "/" + this.props.latest.get('link');
     },
     render: function () {
         var latestLink = '';
@@ -25,7 +25,7 @@ export const FrontPage = React.createClass({
 
             {latestLink}
 
-            <h4>Archive: <a className="archive" href="/#/archive/">Browse by date</a></h4>
+            <h4>Archive: <a className="archive" href="/archive/">Browse by date</a></h4>
 
             <AuthorsContainer/>
         </div>;

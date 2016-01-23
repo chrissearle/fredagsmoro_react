@@ -10,7 +10,7 @@ export const NavBar = React.createClass({
         return this.props.latest.get('title');
     },
     getLink: function () {
-        return "/#/" + this.props.latest.get('link');
+        return "/" + this.props.latest.get('link');
     },
     render: function () {
         var latestNav = '';
@@ -34,13 +34,13 @@ export const NavBar = React.createClass({
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <a className="navbar-brand" href="/#/">Fredagsmoro</a>
+                    <a className="navbar-brand" href="/">Fredagsmoro</a>
                 </div>
                 <div className="collapse navbar-collapse" id=" bs-example-navbar-collapse-1">
                     {latestNav}
                     <p className="navbar-text">Archive:</p>
                     <ul className="nav navbar-nav">
-                        <li><a ref="archive" href="/#/archive/">Browse by date</a></li>
+                        <li><a ref="archive" href="/archive/">Browse by date</a></li>
                     </ul>
                 </div>
             </div>

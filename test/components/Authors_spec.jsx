@@ -36,8 +36,8 @@ describe('Authors', () => {
 
         const images = scryRenderedDOMComponentsWithTag(component, 'img');
         expect(images.length).to.equal(2);
-        expect(images[0].src).to.equal('img/1.jpg');
-        expect(images[1].src).to.equal('img/2.jpg');
+        expect(images[0].src).to.equal('/img/1.jpg');
+        expect(images[1].src).to.equal('/img/2.jpg');
         expect(images[0].alt).to.equal('Person 1');
         expect(images[1].alt).to.equal('Person 2');
     });

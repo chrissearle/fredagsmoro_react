@@ -44,7 +44,7 @@ describe('FrontPage', () => {
 
         const archive = scryRenderedDOMComponentsWithClass(component, 'archive');
         expect(archive.length).to.equal(1);
-        expect(archive[0].href).to.equal("/#/archive/");
+        expect(archive[0].href).to.equal("/archive/");
     });
 
     it('has a latest link', () => {
@@ -64,7 +64,7 @@ describe('FrontPage', () => {
 
         const latest = scryRenderedDOMComponentsWithClass(component, 'latest');
         expect(latest.length).to.equal(1);
-        expect(latest[0].href).to.equal("/#/2016/12/07/");
+        expect(latest[0].href).to.equal("/2016/12/07/");
         expect(latest[0].textContent).to.equal("December 7, 2016");
     });
 

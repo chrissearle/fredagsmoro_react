@@ -19,7 +19,7 @@ export const Footer = React.createClass({
                     <div key={person.get('name') + "1"} className="col-md-1">
                         <p>
                             <img className="img-circle" alt={person.get('name')} title={person.get('name')}
-                                 src={"img/" + person.get('avatar')}/>
+                                 src={"/img/" + person.get('avatar')}/>
                         </p>
                     </div>,
                     <div key={person.get('name') + "2"} className="col-md-3">
