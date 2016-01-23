@@ -78,7 +78,7 @@ describe('Calendar', () => {
 
         const dates = scryRenderedDOMComponentsWithTag(component, "a");
         expect(dates.length).to.equal(1);
-        expect(dates[0].href).to.equal("/#/2011/05/06/");
+        expect(dates[0].href).to.equal("/2011/05/06/");
         expect(dates[0].textContent).to.equal("6th");
     });
 
