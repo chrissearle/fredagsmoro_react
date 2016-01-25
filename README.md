@@ -38,9 +38,10 @@ You will need
 * npm run docker:build - create the image (also runs webpack)
 * npm run docker:deploy - deploy the image
 * npm run doit - git pull, grab files, make all updates, commit & push, build image and deploy
+* npm run serve - runs webpack-dev-server with the correct config file.
 
 npm test (there's also an npm run test:watch) should run green before committing.
 
 ### Local running
 
-webpack-dev-server will start the app on port 8080
+npm run serve will start webpack-dev-server on port 8080

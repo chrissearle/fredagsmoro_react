@@ -41,9 +41,13 @@ const routes = <Route component={App}>
     <Route path="/:year/:month/:day" component={ShowContainer}/>
 </Route>
 
-const unlisten = browserHistory.listen(location => {
-    ga('send', location)
-})
+var unlisten
+
+if (typeof GA_TRACKING_CODE !== 'undefined') {
+    unlisten = browserHistory.listen(location => {
+        ga('send', location)
+    })
+}
 
 ReactDOM.render(
     <Provider store={store}>
@@ -52,7 +56,9 @@ ReactDOM.render(
     document.getElementById('app')
 )
 
-unlisten()
+if (typeof GA_TRACKING_CODE !== 'undefined') {
+    unlisten()
+}
 
 ReactDOM.render(
     <Provider store={store}>

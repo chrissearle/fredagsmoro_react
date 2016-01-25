@@ -2,8 +2,6 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
         'bootstrap-loader',
         './src/index.jsx'
     ],
@@ -24,13 +22,7 @@ module.exports = {
         publicPath: '/',
         filename: 'bundle.js'
     },
-    devServer: {
-        contentBase: './build/site',
-        historyApiFallback: true,
-        hot: true
-    },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             GA_TRACKING_CODE:  JSON.stringify('UA-2221544-15')
         })
