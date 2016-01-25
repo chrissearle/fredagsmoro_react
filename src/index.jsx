@@ -45,7 +45,7 @@ var unlisten
 
 if (typeof GA_TRACKING_CODE !== 'undefined') {
     unlisten = browserHistory.listen(location => {
-        ga('send', location)
+        ga('send', 'pageview', location.pathname)
     })
 }
 
