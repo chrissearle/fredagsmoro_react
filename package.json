@@ -10,7 +10,8 @@
     "docker:deploy": "./scripts/deploy_image.sh",
     "doit": "./scripts/doit.sh",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "serve": "webpack-dev-server --config webpack-dev.config.js"
   },
   "babel": {
     "presets": [
