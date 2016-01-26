@@ -7,7 +7,7 @@ import {Router,Route,browserHistory } from 'react-router'
 
 import ga from 'ga-react-router'
 
-import {List} from 'immutable'
+import {fromJS} from 'immutable'
 
 import $ from 'jquery'
 
@@ -20,15 +20,10 @@ import {ShowContainer} from './components/Show'
 import {FooterContainer} from './components/Footer'
 import {NavBarContainer} from './components/NavBar'
 
-const store = createStore(reducer)
-
-store.dispatch({
-    type: 'SET_STATE',
-    state: {
-        people: [],
-        data: []
-    }
-})
+const store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(reducer, fromJS({
+    people: [],
+    data: []
+}));
 
 // Quick Fix - since the data is static
 $.get("/people.json", function (people) {
