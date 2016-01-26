@@ -1,19 +1,24 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {IndexLink,Link} from 'react-router';
-import {connect} from 'react-redux';
+import React from 'react'
+import {connect} from 'react-redux'
+import {Map} from 'immutable'
+
+import {PureRenderComponent} from './PureRenderComponent'
+
 import {getLatestFromState} from '../helpers'
 
-export const NavBar = React.createClass({
-    mixins: [PureRenderMixin],
-    getTitle: function () {
-        return this.props.latest.get('title');
-    },
-    getLink: function () {
-        return "/" + this.props.latest.get('link');
-    },
-    render: function () {
-        var latestNav = '';
+const defaultState = Map()
+
+export class NavBar extends PureRenderComponent {
+    getTitle() {
+        return this.props.latest.get('title')
+    }
+
+    getLink() {
+        return "/" + this.props.latest.get('link')
+    }
+
+    render() {
+        var latestNav = ''
 
         if (this.getTitle()) {
             latestNav = [
@@ -21,7 +26,7 @@ export const NavBar = React.createClass({
                 <ul key="latestLink" className="nav navbar-nav">
                     <li><a ref="latestNav" href={this.getLink()}>{ this.getTitle() }</a></li>
                 </ul>
-            ];
+            ]
         }
 
         return <nav className="navbar navbar-inverse navbar-fixed-top ng-scope" role="navigation">
@@ -44,13 +49,17 @@ export const NavBar = React.createClass({
                     </ul>
                 </div>
             </div>
-        </nav>;
+        </nav>
     }
-});
+}
+
+NavBar.propTypes = {
+    latest: React.PropTypes.instanceOf(Map)
+}
 
 function mapStateToProps(state) {
     return {
-        latest: getLatestFromState(state)
+        latest: getLatestFromState(state, defaultState)
     };
 }
 

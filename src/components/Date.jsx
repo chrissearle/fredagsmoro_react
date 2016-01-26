@@ -1,26 +1,32 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {List} from 'immutable';
-import moment from 'moment';
+import React from 'react'
+import {Map} from 'immutable'
 
-export const Date = React.createClass({
-    mixins: [PureRenderMixin],
-    getDate: function () {
-        return this.props.date.get('name');
-    },
-    getTitle: function () {
-        return moment().date(parseInt(this.getDate())).format("Do");
-    },
-    getYear: function () {
-        return this.props.year;
-    },
-    getMonth: function () {
-        return this.props.month;
-    },
-    getCount: function () {
-        return this.props.date.get('tree').size;
-    },
-    render: function () {
+import {PureRenderComponent} from './PureRenderComponent'
+
+import {dateArchiveTitle} from '../helpers'
+
+export class Date extends PureRenderComponent {
+    getDate() {
+        return this.props.date.get('name')
+    }
+
+    getTitle() {
+        return dateArchiveTitle(parseInt(this.getDate()))
+    }
+
+    getYear() {
+        return this.props.year
+    }
+
+    getMonth() {
+        return this.props.month
+    }
+
+    getCount() {
+        return this.props.date.get('tree').size
+    }
+
+    render() {
         return <td>
             <a href={"/" + this.getYear() + "/" + this.getMonth() + "/" + this.getDate() + "/"}>
                 {this.getTitle()}
@@ -31,6 +37,13 @@ export const Date = React.createClass({
             <span className="badge">
                 {this.getCount()} images
             </span>
-        </td>;
+        </td>
     }
-});
+}
+
+
+Date.propTypes = {
+    date: React.PropTypes.instanceOf(Map).isRequired,
+    month: React.PropTypes.string.isRequired,
+    year: React.PropTypes.string.isRequired
+}

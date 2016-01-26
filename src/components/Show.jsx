@@ -2,7 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import {Map, List} from 'immutable';
-import {entryTitle} from '../helpers';
+import {weekDisplayTitle} from '../helpers';
 import {Image} from './Image';
 
 export const Show = React.createClass({
@@ -25,7 +25,7 @@ export const Show = React.createClass({
                 month: month.get('name'),
                 date: date.get('name'),
                 items: date.get('tree'),
-                title: entryTitle(year.get('name'), month.get('name'), date.get('name'))
+                title: weekDisplayTitle(year.get('name'), month.get('name'), date.get('name'))
             };
         }
 

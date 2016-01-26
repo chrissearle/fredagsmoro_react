@@ -11,6 +11,26 @@ const store = createStore(reducer);
 const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} = React.addons.TestUtils;
 
 describe('FrontPage', () => {
+    const people = [
+        {
+            "name": "Person 1",
+            "period": "Period 1",
+            "avatar": "1.jpg"
+        },
+        {
+            "name": "Person 2",
+            "period": "Period 2",
+            "avatar": "2.jpg"
+        }
+    ]
+
+    store.dispatch({
+        type: 'SET_STATE',
+        state: {
+            people: people
+        }
+    })
+
 
     it('renders a jumbotron', () => {
         const component = renderIntoDocument(

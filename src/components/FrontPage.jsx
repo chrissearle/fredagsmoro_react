@@ -1,23 +1,29 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {IndexLink,Link} from 'react-router';
-import {connect} from 'react-redux';
-import {getLatestFromState} from '../helpers';
-import {AuthorsContainer} from './Authors';
+import React from 'react'
+import {connect} from 'react-redux'
+import {Map} from 'immutable'
 
-export const FrontPage = React.createClass({
-    mixins: [PureRenderMixin],
-    getTitle: function () {
-        return this.props.latest.get('title');
-    },
-    getLink: function () {
-        return "/" + this.props.latest.get('link');
-    },
-    render: function () {
-        var latestLink = '';
+import {getLatestFromState} from '../helpers'
+
+import {PureRenderComponent} from './PureRenderComponent'
+import {AuthorsContainer} from './Authors'
+
+const defaultState = Map()
+
+export class FrontPage extends PureRenderComponent {
+    getTitle() {
+        return this.props.latest.get('title')
+    }
+
+    getLink() {
+        return "/" + this.props.latest.get('link')
+    }
+
+
+    render() {
+        var latestLink = ''
 
         if (this.getTitle()) {
-            latestLink = <h3>Latest: <a className="latest" href={this.getLink()}>{this.getTitle()}</a></h3>;
+            latestLink = <h3>Latest: <a className="latest" href={this.getLink()}>{this.getTitle()}</a></h3>
         }
 
         return <div className="jumbotron">
@@ -28,16 +34,21 @@ export const FrontPage = React.createClass({
             <h4>Archive: <a className="archive" href="/archive/">Browse by date</a></h4>
 
             <AuthorsContainer/>
-        </div>;
+        </div>
     }
-});
+}
+
+FrontPage.propTypes = {
+    latest: React.PropTypes.instanceOf(Map).isRequired
+}
+
 
 function mapStateToProps(state) {
     return {
-        latest: getLatestFromState(state)
-    };
+        latest: getLatestFromState(state, defaultState)
+    }
 }
 
-export const FrontPageContainer = connect(mapStateToProps)(FrontPage);
+export const FrontPageContainer = connect(mapStateToProps)(FrontPage)
 
 

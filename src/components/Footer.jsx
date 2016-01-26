@@ -1,13 +1,15 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {connect} from 'react-redux';
+import React from 'react'
+import {connect} from 'react-redux'
+import {List} from 'immutable'
 
-export const Footer = React.createClass({
-    mixins: [PureRenderMixin],
-    getPeople: function () {
-        return this.props.people || [];
-    },
-    render: function () {
+import {PureRenderComponent} from './PureRenderComponent'
+
+export class Footer extends PureRenderComponent {
+    getPeople() {
+        return this.props.people
+    }
+
+    render() {
         return <footer className="footer">
             <div className="col-md-4">
                 <p>
@@ -28,15 +30,19 @@ export const Footer = React.createClass({
                     </div>
                 ]
             )}
-        </footer>;
+        </footer>
     }
-});
+}
+
+Footer.propTypes = {
+    people: React.PropTypes.instanceOf(List).isRequired
+}
 
 function mapStateToProps(state) {
     return {
         people: state.get('people')
-    };
+    }
 }
 
-export const FooterContainer = connect(mapStateToProps)(Footer);
+export const FooterContainer = connect(mapStateToProps)(Footer)
 

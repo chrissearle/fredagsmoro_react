@@ -1,33 +1,36 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {connect} from 'react-redux';
-import {List} from 'immutable';
-import {Year} from './Year';
+import React from 'react'
+import {connect} from 'react-redux'
+import {List} from 'immutable'
 
-export const Archive = React.createClass({
-    mixins: [PureRenderMixin],
-    getData: function () {
-        if (this.props.data) {
-            return this.props.data.sortBy(year => -year.get('name'));
-        } else {
-            return List();
-        }
-    },
-    render: function () {
+import {PureRenderComponent} from './PureRenderComponent'
+import {Year} from './Year'
+
+const defaultState = List()
+
+export class Archive extends PureRenderComponent {
+    getData() {
+        return this.props.data.sortBy(year => -year.get('name'))
+    }
+
+    render() {
         return <div>
             {this.getData().map(year =>
                 <Year key={"Year:" + year.get('name')} year={year}/>
             )}
-        </div>;
+        </div>
     }
-});
+}
+
+Archive.propTypes = {
+    data: React.PropTypes.instanceOf(List).isRequired
+}
 
 function mapStateToProps(state) {
     return {
-        data: state.get('data')
-    };
+        data: state.get('data') || defaultState
+    }
 }
 
-export const ArchiveContainer = connect(mapStateToProps)(Archive);
+export const ArchiveContainer = connect(mapStateToProps)(Archive)
 
 

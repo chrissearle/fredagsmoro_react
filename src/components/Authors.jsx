@@ -1,13 +1,15 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {connect} from 'react-redux';
+import React from 'react'
+import {connect} from 'react-redux'
+import {List} from 'immutable'
 
-export const Authors = React.createClass({
-    mixins: [PureRenderMixin],
-    getPeople: function () {
-        return this.props.people || [];
-    },
-    render: function () {
+import {PureRenderComponent} from './PureRenderComponent'
+
+export class Authors extends PureRenderComponent {
+    getPeople() {
+        return this.props.people
+    }
+
+    render() {
         return <table className="table table-condensed">
             <thead>
             <tr>
@@ -23,14 +25,19 @@ export const Authors = React.createClass({
                 </tr>
             )}
             </tbody>
-        </table>;
+        </table>
     }
-});
+}
+
+Authors.propTypes = {
+    people: React.PropTypes.instanceOf(List).isRequired
+}
 
 function mapStateToProps(state) {
     return {
         people: state.get('people')
-    };
+    }
 }
-export const AuthorsContainer = connect(mapStateToProps)(Authors);
+
+export const AuthorsContainer = connect(mapStateToProps)(Authors)
 
