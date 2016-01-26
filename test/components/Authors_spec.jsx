@@ -22,7 +22,7 @@ describe('Authors', () => {
 
     it('renders a table', () => {
         const component = renderIntoDocument(
-            <Authors people={fromJS([])} />
+            <Authors people={fromJS(people)} />
         );
 
         const table =  scryRenderedDOMComponentsWithTag(component, 'table');

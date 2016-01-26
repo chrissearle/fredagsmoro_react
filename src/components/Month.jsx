@@ -1,28 +1,30 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {List} from 'immutable';
-import moment from 'moment';
-import {Date} from './Date';
+import React from 'react'
+import {Map} from 'immutable'
 
-export const Month = React.createClass({
-    mixins: [PureRenderMixin],
-    getMonth: function () {
+import {PureRenderComponent} from './PureRenderComponent'
+import {Date} from './Date'
+
+import {monthArchiveTitle} from '../helpers'
+
+export class Month extends PureRenderComponent {
+
+    getMonth() {
         return this.props.month.get('name');
-    },
-    getTitle: function () {
-        return moment().month(parseInt(this.getMonth()) - 1).format("MMM");
-    },
-    getYear: function () {
-        return this.props.year;
-    },
-    getTree: function () {
-        if (this.props.month) {
-            return this.props.month.get('tree').sortBy(date => date.get('name'));
-        } else {
-            return List();
-        }
-    },
-    render: function () {
+    }
+
+    getTitle() {
+        return monthArchiveTitle(parseInt(this.getMonth()) - 1)
+    }
+
+    getYear() {
+        return this.props.year
+    }
+
+    getTree() {
+        return this.props.month.get('tree').sortBy(date => date.get('name'));
+    }
+
+    render() {
         var spacers = [];
 
         let missing = 5 - this.getTree().size;
@@ -37,6 +39,11 @@ export const Month = React.createClass({
                 <Date key={"Date:" + date.get('name')} date={date} month={this.getMonth()} year={this.getYear()}/>
             )}
             {spacers}
-        </tr>;
+        </tr>
     }
-});
+}
+
+Month.propTypes = {
+    year: React.PropTypes.string.isRequired,
+    month: React.PropTypes.instanceOf(Map).isRequired
+}

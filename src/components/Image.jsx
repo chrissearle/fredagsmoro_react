@@ -1,47 +1,50 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React from 'react'
+import {Map} from 'immutable'
 
-const Img = React.createClass({
-    mixins: [PureRenderMixin],
-    getSrc: function () {
-        return this.props.src;
-    },
-    render: function () {
-        return <img src={this.getSrc()}/>;
+import {PureRenderComponent} from './PureRenderComponent'
+
+class Img extends PureRenderComponent {
+    getSrc() {
+        return this.props.src
     }
-});
 
-const Video = React.createClass({
-    mixins: [PureRenderMixin],
-    getSrc: function () {
-        return this.props.src;
-    },
-    render: function () {
-        return <video src={this.getSrc()} autoPlay loop/>;
+    render() {
+        return <img src={this.getSrc()}/>
     }
-});
+}
 
-export const Image = React.createClass({
-    mixins: [PureRenderMixin],
-    getSrc: function () {
-        return this.props.item.get('src');
-    },
-    getType: function () {
-        const src = this.getSrc();
+class Video extends PureRenderComponent {
+    getSrc() {
+        return this.props.src
+    }
+
+    render() {
+        return <video src={this.getSrc()} autoPlay loop/>
+    }
+}
+
+export class Image extends PureRenderComponent {
+    getSrc() {
+        return this.props.item.get('src')
+    }
+
+    getType() {
+        const src = this.getSrc()
 
         if (src.endsWith(".webm") || src.endsWith(".mp4")) {
-            return "video";
+            return "video"
         }
 
-        return "img";
-    },
-    render: function () {
-        var display;
+        return "img"
+    }
+
+    render() {
+        var display
 
         if (this.getType() == 'img') {
-            display = <Img src={this.getSrc()}/>;
+            display = <Img src={this.getSrc()}/>
         } else {
-            display = <Video src={this.getSrc()}/>;
+            display = <Video src={this.getSrc()}/>
         }
 
         return <div className="panel panel-default">
@@ -51,6 +54,10 @@ export const Image = React.createClass({
             <div className="panel-footer">
                 <a className="btn btn-xs btn-primary" target="_blank" href={this.getSrc()}>direct image link</a>
             </div>
-        </div>;
+        </div>
     }
-});
+}
+
+Image.propTypes = {
+    item: React.PropTypes.instanceOf(Map).isRequired
+}

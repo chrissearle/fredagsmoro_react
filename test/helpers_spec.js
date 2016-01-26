@@ -1,4 +1,4 @@
-import {fromJS} from 'immutable';
+import {fromJS, Map} from 'immutable';
 import {expect} from 'chai';
 
 import {getLatestFromState} from '../src/helpers';
@@ -47,7 +47,7 @@ describe('getLatestFromState', () => {
     });
 
     it('gets the correct state', () => {
-        let latest = getLatestFromState(state);
+        let latest = getLatestFromState(state, Map());
 
         expect(latest.get('year')).to.equal("2015");
         expect(latest.get('month')).to.equal("12");

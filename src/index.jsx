@@ -22,6 +22,14 @@ import {NavBarContainer} from './components/NavBar'
 
 const store = createStore(reducer)
 
+store.dispatch({
+    type: 'SET_STATE',
+    state: {
+        people: [],
+        data: []
+    }
+})
+
 // Quick Fix - since the data is static
 $.get("/people.json", function (people) {
     $.get("/data.json", function (data) {

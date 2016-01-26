@@ -1,24 +1,23 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Month} from './Month';
-import {List} from 'immutable';
+import {Map} from 'immutable';
 
-export const Year = React.createClass({
-    mixins: [PureRenderMixin],
-    getYear: function () {
+import {PureRenderComponent} from './PureRenderComponent'
+import {Month} from './Month';
+
+export class Year extends PureRenderComponent {
+    getYear() {
         return this.props.year.get('name')
-    },
-    getTitle: function () {
-        return this.getYear();
-    },
-    getTree: function () {
-        if (this.props.year) {
-            return this.props.year.get('tree').sortBy(month => -month.get('name'));
-        } else {
-            return List();
-        }
-    },
-    render: function () {
+    }
+
+    getTitle() {
+        return this.getYear()
+    }
+
+    getTree() {
+        return this.props.year.get('tree').sortBy(month => -month.get('name'));
+    }
+
+    render() {
         return <div className="panel panel-default">
             <div className="panel-heading">
                 <h3 className="panel-title">{this.getTitle()}</h3>
@@ -30,6 +29,10 @@ export const Year = React.createClass({
                 )}
                 </tbody>
             </table>
-        </div>;
+        </div>
     }
-});
+}
+
+Year.propTypes = {
+    year: React.PropTypes.instanceOf(Map).isRequired
+}
