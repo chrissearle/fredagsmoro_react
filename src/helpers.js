@@ -26,7 +26,7 @@ export function getLatestFromState(state, defaultValue) {
                 month: month.get('name'),
                 date: date.get('name'),
                 title: weekDisplayTitle(year.get('name'), month.get('name'), date.get('name')),
-                link: year.get("name") + "/" + month.get("name") + "/" + date.get("name") + "/"
+                link: "/" + year.get("name") + "/" + month.get("name") + "/" + date.get("name") + "/"
             })
 
         }

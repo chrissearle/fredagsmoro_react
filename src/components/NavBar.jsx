@@ -14,7 +14,7 @@ export class NavBar extends PureRenderComponent {
     }
 
     getLink() {
-        return "/" + this.props.latest.get('link')
+        return this.props.latest.get('link')
     }
 
     render() {

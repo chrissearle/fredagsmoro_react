@@ -53,6 +53,6 @@ describe('getLatestFromState', () => {
         expect(latest.get('month')).to.equal("12");
         expect(latest.get('date')).to.equal("31");
         expect(latest.get('title')).to.equal("December 31, 2015");
-        expect(latest.get('link')).to.equal('2015/12/31/');
+        expect(latest.get('link')).to.equal('/2015/12/31/');
     });
 });

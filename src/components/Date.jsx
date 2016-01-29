@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router'
 import {Map} from 'immutable'
 
 import {PureRenderComponent} from './PureRenderComponent'
@@ -28,9 +29,9 @@ export class Date extends PureRenderComponent {
 
     render() {
         return <td>
-            <a href={"/" + this.getYear() + "/" + this.getMonth() + "/" + this.getDate() + "/"}>
+            <Link to={"/" + this.getYear() + "/" + this.getMonth() + "/" + this.getDate() + "/"}>
                 {this.getTitle()}
-            </a>
+            </Link>
             &nbsp;
             -
             &nbsp;
