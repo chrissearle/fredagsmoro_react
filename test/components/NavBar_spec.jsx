@@ -42,7 +42,7 @@ describe('NavBar', () => {
             month: "12",
             date: "07",
             title: "December 7, 2016",
-            link: "2016/12/07/"
+            link: "/2016/12/07/"
         };
 
         const component = renderIntoDocument(

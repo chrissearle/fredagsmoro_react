@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 import {Map} from 'immutable'
 
 import {getLatestFromState} from '../helpers'
@@ -15,7 +16,7 @@ export class FrontPage extends PureRenderComponent {
     }
 
     getLink() {
-        return "/" + this.props.latest.get('link')
+        return this.props.latest.get('link')
     }
 
 
@@ -23,7 +24,7 @@ export class FrontPage extends PureRenderComponent {
         var latestLink = ''
 
         if (this.getTitle()) {
-            latestLink = <h3>Latest: <a className="latest" href={this.getLink()}>{this.getTitle()}</a></h3>
+            latestLink = <h3>Latest: <Link className="latest" to={this.getLink()}>{this.getTitle()}</Link></h3>
         }
 
         return <div className="jumbotron">
@@ -31,7 +32,7 @@ export class FrontPage extends PureRenderComponent {
 
             {latestLink}
 
-            <h4>Archive: <a className="archive" href="/archive/">Browse by date</a></h4>
+            <h4>Archive: <Link className="archive" to="/archive/">Browse by date</Link></h4>
 
             <AuthorsContainer/>
         </div>
