@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import {Router,Route,browserHistory } from 'react-router'
+import {Router,Route,IndexRoute,Redirect,browserHistory } from 'react-router'
 
 import ga from 'ga-react-router'
 
@@ -38,10 +38,16 @@ $.get("/people.json", function (people) {
     })
 })
 
-const routes = <Route component={App}>
-    <Route path="/" component={FrontPageContainer}/>
+const routes = <Route path="/" component={App}>
+    <IndexRoute component={FrontPageContainer}/>
     <Route path="/archive" component={ArchiveContainer}/>
     <Route path="/:year/:month/:day" component={ShowContainer}/>
+    <Redirect from="*" to="/"/>
+</Route>
+
+const headerRoutes = <Route path="/" component={App}>
+    <IndexRoute component={NavBarContainer}/>
+    <Route path="*" component={NavBarContainer}/>
 </Route>
 
 var unlisten
@@ -72,7 +78,7 @@ ReactDOM.render(
 
 ReactDOM.render(
     <Provider store={store}>
-        <NavBarContainer/>
+        <Router history={browserHistory}>{headerRoutes}</Router>
     </Provider>,
     document.getElementById('navbar')
 )
