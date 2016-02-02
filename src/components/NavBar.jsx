@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, IndexLink} from 'react-router'
 import {connect} from 'react-redux'
 import {Map} from 'immutable'
 
@@ -24,7 +25,7 @@ export class NavBar extends PureRenderComponent {
             latestNav = [
                 <p key="latestTitle" className="navbar-text">Latest:</p>,
                 <ul key="latestLink" className="nav navbar-nav">
-                    <li><a ref="latestNav" href={this.getLink()}>{ this.getTitle() }</a></li>
+                    <li><Link ref="latestNav" to={this.getLink()}>{ this.getTitle() }</Link></li>
                 </ul>
             ]
         }
@@ -39,13 +40,13 @@ export class NavBar extends PureRenderComponent {
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <a className="navbar-brand" href="/">Fredagsmoro</a>
+                    <IndexLink className="navbar-brand" to="/">Fredagsmoro</IndexLink>
                 </div>
                 <div className="collapse navbar-collapse" id=" bs-example-navbar-collapse-1">
                     {latestNav}
                     <p className="navbar-text">Archive:</p>
                     <ul className="nav navbar-nav">
-                        <li><a ref="archive" href="/archive/">Browse by date</a></li>
+                        <li><Link ref="archive" to="/archive/">Browse by date</Link></li>
                     </ul>
                 </div>
             </div>
