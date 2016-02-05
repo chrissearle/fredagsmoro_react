@@ -9,6 +9,15 @@ module.exports = _.assign({}, baseConfig, {
         'bootstrap-loader',
         './src/index.jsx'
     ],
+    module: {
+        loaders: [
+            {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
+            {test: /\.css$/, loaders: ['style', 'css', 'postcss']},
+            {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
+            {test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000'},
+            {test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery'}
+        ]
+    },
     devServer: {
         contentBase: './build/site',
         historyApiFallback: true,

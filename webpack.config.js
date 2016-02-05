@@ -7,7 +7,7 @@ module.exports = {
     ],
     module: {
         loaders: [
-            {test: /\.jsx?$/, exclude: /node_modules/, loader: 'react-hot!babel'},
+            {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
             {test: /\.css$/, loaders: ['style', 'css', 'postcss']},
             {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
             {test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000'},
