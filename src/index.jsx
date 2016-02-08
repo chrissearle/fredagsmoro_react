@@ -67,10 +67,6 @@ ReactDOM.render(
     document.getElementById('app')
 )
 
-if (typeof GA_TRACKING_CODE !== 'undefined') {
-    unlisten()
-}
-
 ReactDOM.render(
     <Provider store={store}>
         <FooterContainer/>
