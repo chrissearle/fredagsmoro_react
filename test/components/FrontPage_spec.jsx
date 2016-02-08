@@ -13,14 +13,14 @@ const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComp
 describe('FrontPage', () => {
     const people = [
         {
-            "name": "Person 1",
-            "period": "Period 1",
-            "avatar": "1.jpg"
+            'name': 'Person 1',
+            'period': 'Period 1',
+            'avatar': '1.jpg'
         },
         {
-            "name": "Person 2",
-            "period": "Period 2",
-            "avatar": "2.jpg"
+            'name': 'Person 2',
+            'period': 'Period 2',
+            'avatar': '2.jpg'
         }
     ]
 
@@ -32,11 +32,11 @@ describe('FrontPage', () => {
     })
 
     const data = {
-        year: "2016",
-        month: "12",
-        date: "07",
-        title: "December 7, 2016",
-        link: "/2016/12/07/"
+        year: '2016',
+        month: '12',
+        date: '07',
+        title: 'December 7, 2016',
+        link: '/2016/12/07/'
     }
 
     it('renders a jumbotron', () => {
@@ -59,7 +59,7 @@ describe('FrontPage', () => {
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
         expect(title.length).to.equal(1)
-        expect(title[0].textContent).to.equal("Fredagsmoro")
+        expect(title[0].textContent).to.equal('Fredagsmoro')
     })
 
     it('has an archive link', () => {
@@ -71,7 +71,7 @@ describe('FrontPage', () => {
 
         const archive = scryRenderedDOMComponentsWithClass(component, 'archive')
         expect(archive.length).to.equal(1)
-        expect(archive[0].textContent).to.equal("Browse by date")
+        expect(archive[0].textContent).to.equal('Browse by date')
     })
 
     it('has a latest link', () => {
@@ -83,7 +83,7 @@ describe('FrontPage', () => {
 
         const latest = scryRenderedDOMComponentsWithClass(component, 'latest')
         expect(latest.length).to.equal(1)
-        expect(latest[0].textContent).to.equal("December 7, 2016")
+        expect(latest[0].textContent).to.equal('December 7, 2016')
     })
 
     it('has an authors block', () => {

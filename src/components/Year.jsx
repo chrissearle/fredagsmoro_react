@@ -1,8 +1,8 @@
-import React from 'react';
-import {Map} from 'immutable';
+import React from 'react'
+import {Map} from 'immutable'
 
 import {PureRenderComponent} from './PureRenderComponent'
-import {Month} from './Month';
+import {Month} from './Month'
 
 export class Year extends PureRenderComponent {
     getYear() {
@@ -14,7 +14,7 @@ export class Year extends PureRenderComponent {
     }
 
     getTree() {
-        return this.props.year.get('tree').sortBy(month => -month.get('name'));
+        return this.props.year.get('tree').sortBy(month => -month.get('name'))
     }
 
     render() {
@@ -25,7 +25,7 @@ export class Year extends PureRenderComponent {
             <table className="table">
                 <tbody>
                 {this.getTree().map(month =>
-                    <Month key={"Month:" + month.get('name')} month={month} year={this.getYear()}/>
+                    <Month key={`Month:${month.get('name')}`} month={month} year={this.getYear()}/>
                 )}
                 </tbody>
             </table>

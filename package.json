@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "private": "true",
   "scripts": {
+    "lint": "eslint src test --ext .jsx,.js",
     "content:dropbox": "./scripts/dropbox.rb",
     "content:data": "./scripts/build_data.rb > ./build/site/data.json",
     "content:resize": "./scripts/resize.sh ./build/site/content",
@@ -26,6 +27,7 @@
     "babel-preset-react": "^6.3.13",
     "chai": "^3.4.1",
     "chai-immutable": "^1.5.3",
+    "eslint": "^1.10.3",
     "imports-loader": "^0.6.5",
     "jsdom": "^7.2.2",
     "mocha": "^2.3.4",

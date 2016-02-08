@@ -31,17 +31,17 @@ export class Image extends PureRenderComponent {
     getType() {
         const src = this.getSrc()
 
-        if (src.endsWith(".webm") || src.endsWith(".mp4")) {
-            return "video"
+        if (src.endsWith('.webm') || src.endsWith('.mp4')) {
+            return 'video'
         }
 
-        return "img"
+        return 'img'
     }
 
     render() {
-        var display
+        let display
 
-        if (this.getType() == 'img') {
+        if (this.getType() === 'img') {
             display = <Img src={this.getSrc()}/>
         } else {
             display = <Video src={this.getSrc()}/>

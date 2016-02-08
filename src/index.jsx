@@ -25,11 +25,11 @@ import {NavBarContainer} from './components/NavBar'
 const store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(reducer, fromJS({
     people: [],
     data: []
-}));
+}))
 
 // Quick Fix - since the data is static
-$.get("/people.json", function (people) {
-    $.get("/data.json", function (data) {
+$.get('/people.json', function (people) {
+    $.get('/data.json', function (data) {
         store.dispatch({
             type: 'SET_STATE',
             state: {
@@ -52,10 +52,8 @@ const headerRoutes = <Route path="/" component={App}>
     <Route path="*" component={NavBarContainer}/>
 </Route>
 
-var unlisten
-
 if (typeof GA_TRACKING_CODE !== 'undefined') {
-    unlisten = browserHistory.listen(location => {
+    browserHistory.listen(location => {
         ga('send', 'pageview', location.pathname)
     })
 }
