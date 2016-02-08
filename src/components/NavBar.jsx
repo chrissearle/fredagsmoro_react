@@ -19,7 +19,7 @@ export class NavBar extends PureRenderComponent {
     }
 
     render() {
-        var latestNav = ''
+        let latestNav = ''
 
         if (this.getTitle()) {
             latestNav = [
@@ -61,9 +61,9 @@ NavBar.propTypes = {
 function mapStateToProps(state) {
     return {
         latest: getLatestFromState(state, defaultState)
-    };
+    }
 }
 
-export const NavBarContainer = connect(mapStateToProps)(NavBar);
+export const NavBarContainer = connect(mapStateToProps)(NavBar)
 
 

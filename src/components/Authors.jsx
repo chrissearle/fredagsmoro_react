@@ -19,7 +19,7 @@ export class Authors extends PureRenderComponent {
             <tbody>
             {this.getPeople().map(person =>
                 <tr key={person.get('name')}>
-                    <td><img className="img-circle" alt={person.get('name')} title={person.get('name')} src={"/img/" + person.get('avatar')}/></td>
+                    <td><img className="img-circle" alt={person.get('name')} title={person.get('name')} src={`/img/${person.get('avatar')}`}/></td>
                     <td>{person.get('name')}</td>
                     <td>{person.get('period')}</td>
                 </tr>

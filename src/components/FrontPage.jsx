@@ -21,7 +21,7 @@ export class FrontPage extends PureRenderComponent {
 
 
     render() {
-        var latestLink = ''
+        let latestLink = ''
 
         if (this.getTitle()) {
             latestLink = <h3>Latest: <Link className="latest" to={this.getLink()}>{this.getTitle()}</Link></h3>

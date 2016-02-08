@@ -18,13 +18,13 @@ export class Footer extends PureRenderComponent {
             </div>
             {this.getPeople().map(person =>
                 [
-                    <div key={person.get('name') + "1"} className="col-md-1">
+                    <div key={`${person.get('name')}1`} className="col-md-1">
                         <p>
                             <img className="img-circle" alt={person.get('name')} title={person.get('name')}
-                                 src={"/img/" + person.get('avatar')}/>
+                                 src={`/img/${person.get('avatar')}`}/>
                         </p>
                     </div>,
-                    <div key={person.get('name') + "2"} className="col-md-3">
+                    <div key={`${person.get('name')}2`} className="col-md-3">
                         <p>{person.get('name')}</p>
                         <p>{person.get('period')}</p>
                     </div>

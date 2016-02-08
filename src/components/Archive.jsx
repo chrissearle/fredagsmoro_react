@@ -15,7 +15,7 @@ export class Archive extends PureRenderComponent {
     render() {
         return <div>
             {this.getData().map(year =>
-                <Year key={"Year:" + year.get('name')} year={year}/>
+                <Year key={`Year:${year.get('name')}`} year={year}/>
             )}
         </div>
     }
@@ -27,7 +27,7 @@ Archive.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        data: state.get('data') || defaultState
+        data: state.get('data') || defaultState
     }
 }
 

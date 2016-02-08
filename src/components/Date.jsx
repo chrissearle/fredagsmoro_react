@@ -29,7 +29,7 @@ export class Date extends PureRenderComponent {
 
     render() {
         return <td>
-            <Link to={"/" + this.getYear() + "/" + this.getMonth() + "/" + this.getDate() + "/"}>
+            <Link to={`/${this.getYear()}/${this.getMonth()}/${this.getDate()}/`}>
                 {this.getTitle()}
             </Link>
             &nbsp;

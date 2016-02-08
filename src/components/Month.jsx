@@ -9,7 +9,7 @@ import {monthArchiveTitle} from '../helpers'
 export class Month extends PureRenderComponent {
 
     getMonth() {
-        return this.props.month.get('name');
+        return this.props.month.get('name')
     }
 
     getTitle() {
@@ -21,22 +21,22 @@ export class Month extends PureRenderComponent {
     }
 
     getTree() {
-        return this.props.month.get('tree').sortBy(date => date.get('name'));
+        return this.props.month.get('tree').sortBy(date => date.get('name'))
     }
 
     render() {
-        var spacers = [];
+        const spacers = []
 
-        let missing = 5 - this.getTree().size;
+        const missing = 5 - this.getTree().size
 
-        for (var i = 0; i < missing; i++) {
-            spacers.push(<td key={"spacer:" + i}/>);
+        for (let i = 0; i < missing; i++) {
+            spacers.push(<td key={`spacer:${i}`}/>)
         }
 
         return <tr>
             <th>{this.getTitle()}</th>
             {this.getTree().map(date =>
-                <Date key={"Date:" + date.get('name')} date={date} month={this.getMonth()} year={this.getYear()}/>
+                <Date key={`Date:${date.get('name')}`} date={date} month={this.getMonth()} year={this.getYear()}/>
             )}
             {spacers}
         </tr>
