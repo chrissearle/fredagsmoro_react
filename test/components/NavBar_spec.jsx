@@ -1,3 +1,5 @@
+/* globals describe, it */
+
 import React from 'react/addons'
 import {findDOMNode} from 'react-dom'
 import {NavBar} from '../../src/components/NavBar'

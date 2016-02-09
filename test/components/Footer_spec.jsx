@@ -1,3 +1,5 @@
+/* globals describe, it */
+
 import React from 'react/addons'
 import {Footer} from '../../src/components/Footer'
 import {expect} from 'chai'

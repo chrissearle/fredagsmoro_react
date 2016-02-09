@@ -1,3 +1,5 @@
+/* globals describe, it */
+
 import React from 'react/addons'
 import {Year} from '../../src/components/Year'
 import {expect} from 'chai'

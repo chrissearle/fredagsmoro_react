@@ -1,3 +1,5 @@
+/* globals describe, it */
+
 import {fromJS, Map} from 'immutable'
 import {expect} from 'chai'
 

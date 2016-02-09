@@ -1,3 +1,5 @@
+/* globals describe, it */
+
 import React from 'react/addons'
 import {Authors} from '../../src/components/Authors'
 import {expect} from 'chai'
