@@ -14,6 +14,7 @@ A collection of random images from the net - collected by Karl Øgaard (previous
 
 * npm
 * a fairly recent ruby
+* git lfs installed (https://github.com/github/git-lfs)
 
 ### Installation
 
