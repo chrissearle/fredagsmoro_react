@@ -5,13 +5,15 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
-import {Router,Route,IndexRoute,Redirect,browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
+
+import { createStore, combineReducers } from 'redux'
+
+import { Provider } from 'react-redux'
+
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import ga from 'ga-react-router'
-
-import {fromJS} from 'immutable'
 
 import $ from 'jquery'
 
@@ -24,21 +26,29 @@ import {ShowContainer} from './components/Show'
 import {FooterContainer} from './components/Footer'
 import {NavBarContainer} from './components/NavBar'
 
-const store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(reducer, fromJS({
-    people: [],
-    data: []
-}))
+const store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(
+    combineReducers({
+        data: reducer,
+        routing: routerReducer
+    })
+)
+
+const history = syncHistoryWithStore(browserHistory, store)
 
 // Quick Fix - since the data is static
 $.get('/people.json', function (people) {
     $.get('/data.json', function (data) {
-        store.dispatch({
-            type: 'SET_STATE',
-            state: {
-                people: people,
-                data: data
+        store.dispatch(
+            {
+                type: 'SET_STATE',
+                data: {
+                    state: {
+                        people: people,
+                        data: data
+                    }
+                }
             }
-        })
+        )
     })
 })
 
@@ -55,14 +65,14 @@ const headerRoutes = <Route path="/" component={App}>
 </Route>
 
 if (typeof GA_TRACKING_CODE !== 'undefined') {
-    browserHistory.listen(location => {
+    history.listen(location => {
         ga('send', 'pageview', location.pathname)
     })
 }
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>{routes}</Router>
+        <Router history={history}>{routes}</Router>
     </Provider>,
     document.getElementById('app')
 )
@@ -76,7 +86,7 @@ ReactDOM.render(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>{headerRoutes}</Router>
+        <Router history={history}>{headerRoutes}</Router>
     </Provider>,
     document.getElementById('navbar')
 )

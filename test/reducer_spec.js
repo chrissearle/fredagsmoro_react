@@ -24,10 +24,15 @@ describe('reducer', () => {
 
         const action = {
             type: 'SET_STATE',
-            state: Map({
-                people: fromJS(people),
-                data: List()
-            })
+            data: {
+                state: Map(
+                    {
+                        people: fromJS(people),
+                        data: List()
+
+                    }
+                )
+            }
         }
 
         const nextState = reducer(initialState, action)
@@ -41,10 +46,14 @@ describe('reducer', () => {
     it('handles SET_STATE without initial state', () => {
         const action = {
             type: 'SET_STATE',
-            state: Map({
-                people: fromJS(people),
-                data: List()
-            })
+            data: {
+                state: Map(
+                    {
+                        people: fromJS(people),
+                        data: List()
+                    }
+                )
+            }
         }
 
         const nextState = reducer(undefined, action)

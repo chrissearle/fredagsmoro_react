@@ -40,7 +40,7 @@ Footer.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        people: state.get('people')
+        people: state.data.get('people')
     }
 }
 
