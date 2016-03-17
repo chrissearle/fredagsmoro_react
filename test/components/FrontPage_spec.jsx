@@ -4,11 +4,6 @@ import React from 'react/addons'
 import {FrontPage} from '../../src/components/FrontPage'
 import {expect} from 'chai'
 import {fromJS,Map} from 'immutable'
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
-import reducer from '../../src/reducer'
-
-const store = createStore(reducer)
 
 const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} = React.addons.TestUtils
 
@@ -26,13 +21,6 @@ describe('FrontPage', () => {
         }
     ]
 
-    store.dispatch({
-        type: 'SET_STATE',
-        state: {
-            people: people
-        }
-    })
-
     const data = {
         year: '2016',
         month: '12',
@@ -43,9 +31,7 @@ describe('FrontPage', () => {
 
     it('renders a jumbotron', () => {
         const component = renderIntoDocument(
-            <Provider store={store}>
-                <FrontPage latest={Map()}/>
-            </Provider>
+            <FrontPage latest={Map()}/>
         )
 
         const jumbo = scryRenderedDOMComponentsWithClass(component, 'jumbotron')
@@ -54,9 +40,7 @@ describe('FrontPage', () => {
 
     it('has a title', () => {
         const component = renderIntoDocument(
-            <Provider store={store}>
-                <FrontPage latest={Map()}/>
-            </Provider>
+            <FrontPage latest={Map()}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
@@ -66,9 +50,7 @@ describe('FrontPage', () => {
 
     it('has an archive link', () => {
         const component = renderIntoDocument(
-            <Provider store={store}>
-                <FrontPage latest={Map(data)}/>
-            </Provider>
+            <FrontPage latest={Map(data)}/>
         )
 
         const archive = scryRenderedDOMComponentsWithClass(component, 'archive')
@@ -78,9 +60,7 @@ describe('FrontPage', () => {
 
     it('has a latest link', () => {
         const component = renderIntoDocument(
-            <Provider store={store}>
-                <FrontPage latest={fromJS(data)}/>
-            </Provider>
+            <FrontPage latest={fromJS(data)}/>
         )
 
         const latest = scryRenderedDOMComponentsWithClass(component, 'latest')
@@ -90,9 +70,7 @@ describe('FrontPage', () => {
 
     it('has an authors block', () => {
         const component = renderIntoDocument(
-            <Provider store={store}>
-                <FrontPage latest={Map()}/>
-            </Provider>
+            <FrontPage latest={Map()} people={fromJS(people)}/>
         )
 
         const authors = scryRenderedDOMComponentsWithClass(component, 'table')

@@ -6,47 +6,51 @@ import {expect} from 'chai'
 import {getLatestFromState} from '../src/helpers'
 
 describe('getLatestFromState', () => {
-    const state = fromJS({
-        data: [
+    const state = {
+        data: fromJS(
             {
-                'name': '2011',
-                'tree': [
+                data: [
                     {
-                        'name': '05',
+                        'name': '2011',
                         'tree': [
                             {
-                                'name': '06'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                'name': '2015',
-                'tree': [
-                    {
-                        'name': '05',
-                        'tree': [
-                            {
-                                'name': '06'
+                                'name': '05',
+                                'tree': [
+                                    {
+                                        'name': '06'
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        'name': '12',
+                        'name': '2015',
                         'tree': [
                             {
-                                'name': '06'
+                                'name': '05',
+                                'tree': [
+                                    {
+                                        'name': '06'
+                                    }
+                                ]
                             },
                             {
-                                'name': '31'
+                                'name': '12',
+                                'tree': [
+                                    {
+                                        'name': '06'
+                                    },
+                                    {
+                                        'name': '31'
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             }
-        ]
-    })
+        )
+    }
 
     it('gets the correct state', () => {
         const latest = getLatestFromState(state, Map())

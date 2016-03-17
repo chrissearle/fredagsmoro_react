@@ -27,7 +27,7 @@ Archive.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        data: state.get('data') || defaultState
+        data: state.data.get('data') || defaultState
     }
 }
 

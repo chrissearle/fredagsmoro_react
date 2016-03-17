@@ -47,7 +47,7 @@ export const Show = React.createClass({
 
 function mapStateToProps(state) {
     return {
-        data: state.get('data')
+        data: state.data.get('data')
     }
 }
 

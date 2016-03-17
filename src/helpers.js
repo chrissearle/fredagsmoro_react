@@ -14,10 +14,12 @@ export function monthArchiveTitle(month) {
 }
 
 export function getLatestFromState(state, defaultValue) {
-    if (state.has('data')) {
-        if (state.get('data').size > 0) {
+    const data = state.data
 
-            const year = state.get('data').sortBy(year => -year.get('name')).first()
+    if (data.has('data')) {
+        if (data.get('data').size > 0) {
+
+            const year = data.get('data').sortBy(year => -year.get('name')).first()
             const month = year.get('tree').sortBy(month => -month.get('name')).first()
             const date = month.get('tree').sortBy(date => -date.get('name')).first()
 
