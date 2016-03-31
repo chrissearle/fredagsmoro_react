@@ -25,10 +25,14 @@ Archive.propTypes = {
     data: React.PropTypes.instanceOf(List).isRequired
 }
 
-function mapStateToProps(state) {
-    return {
-        data: state.data.get('data') || defaultState
+export function mapStateToProps(state) {
+    const props = {}
+
+    if (state && state.data && state.data.has('data')) {
+        props.data = state.data.get('data')
     }
+
+    return props
 }
 
 export const ArchiveContainer = connect(mapStateToProps)(Archive)
