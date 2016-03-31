@@ -34,16 +34,26 @@ You will need
 
 ### npm commands
 
-* npm run content:dropbox - move files from Dropbox into the site
-* npm run content:data - rebuild the data file
-* npm run content:resize - make sure no image is too large across the whole site. Not required for a new week - run just for that week as part of content:dropbox
-* npm run docker:build - create the image (also runs webpack)
-* npm run docker:deploy - deploy the image
-* npm run doit - git pull, grab files, make all updates, commit & push, build image and deploy
-* npm start - runs webpack-dev-server with the correct config file.
+#### Updating scripts
 
-npm test (there's also an npm run test:watch) should run green before committing.
+* `npm run content:dropbox` - move files from Dropbox into the site
+* `npm run content:data` - rebuild the data file
+* `npm run content:resize` - make sure no image is too large across the whole site. Not required for a new week - run just for that week as part of content:dropbox
+* `npm run docker:build` - create the image (also runs webpack)
+* `npm run docker:deploy` - deploy the image
+* `npm run doit` - git pull, grab files, make all updates, commit & push, build image and deploy
+
+#### Testing
+
+* `npm run lint` - eslint the code
+* `npm test` - run the mocha tests
+* `npm run test:watch` - run the tests using a file watcher
+* `npm run test:coverage` - run the tests instrumented for coverage
+* `npm run coverage:report` - generate an lcov report in ./coverage
+* `npm run coverage:codecov` - send the report to codecov. Will only work from the travis-ci builds
+
+**Both test and lint should run green before committing since they will both cause a travis-ci fail otherwise**
 
 ### Local running
 
-npm start will start webpack-dev-server on port 8080
+* `npm start` will start webpack-dev-server on port 8080
