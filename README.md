@@ -1,6 +1,7 @@
 # Fredagsmoro
 
 [![Build Status](https://travis-ci.org/chrissearle/fredagsmoro_react.svg?branch=master)](https://travis-ci.org/chrissearle/fredagsmoro_react)
+[![codecov.io](https://codecov.io/github/chrissearle/fredagsmoro_react/coverage.svg?branch=master)](https://codecov.io/github/chrissearle/fredagsmoro_react?branch=master)
 
 A collection of random images from the net - collected by Karl Øgaard (previously Ragnar Bergvik) and sent out each Friday to amuse their colleagues.
 
