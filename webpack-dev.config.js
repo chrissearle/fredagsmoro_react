@@ -7,11 +7,11 @@ module.exports = _.assign({}, baseConfig, {
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
         'bootstrap-loader',
-        './src/index.jsx'
+        './src/index.js'
     ],
     module: {
         loaders: [
-            {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
+            {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
             {test: /\.css$/, loaders: ['style', 'css', 'postcss']},
             {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
             {test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000'},
