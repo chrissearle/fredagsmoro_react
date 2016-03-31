@@ -11,9 +11,10 @@
     "docker:deploy": "./scripts/deploy_image.sh",
     "doit": "./scripts/doit.sh",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js)'",
+    "test:coverage": "nyc npm run test",
     "test:watch": "npm run test -- --watch",
-    "test:coverage": "nyc npm run test && nyc report --reporter=lcov",
-    "test:ci": "npm run test:coverage && codecov",
+    "coverage:report": "nyc report --reporter=lcov",
+    "coverage:codecov": "npm run coverage:report && codecov",
     "start": "webpack-dev-server --config webpack-dev.config.js"
   },
   "babel": {
