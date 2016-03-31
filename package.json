@@ -3,14 +3,14 @@
   "version": "0.0.3",
   "private": "true",
   "scripts": {
-    "lint": "eslint src test --ext .jsx,.js",
+    "lint": "eslint src test",
     "content:dropbox": "./scripts/dropbox.rb",
     "content:data": "./scripts/build_data.rb > ./build/site/data.json",
     "content:resize": "./scripts/resize.sh ./build/site/content",
     "docker:build": "./scripts/build_image.sh",
     "docker:deploy": "./scripts/deploy_image.sh",
     "doit": "./scripts/doit.sh",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js)'",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "nyc npm run test; nyc report --reporter=lcov",
     "start": "webpack-dev-server --config webpack-dev.config.js"
@@ -19,11 +19,6 @@
     "presets": [
       "es2015",
       "react"
-    ]
-  },
-  "nyc": {
-    "extension": [
-      ".jsx"
     ]
   },
   "devDependencies": {
