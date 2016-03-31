@@ -1,10 +1,9 @@
 /* globals describe, it */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {Archive, mapStateToProps} from '../../src/components/Archive'
 import {expect} from 'chai'
-import {fromJS, Map} from 'immutable'
+import {fromJS} from 'immutable'
 
 import TestUtils from 'react-addons-test-utils'
 
