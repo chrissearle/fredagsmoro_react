@@ -9,7 +9,7 @@ import {getLatestFromState} from '../helpers'
 
 const defaultState = Map()
 
-export class NavBar extends PureRenderComponent {
+export class DisplayNavBar extends PureRenderComponent {
     getTitle() {
         return this.props.latest.get('title')
     }
@@ -54,7 +54,7 @@ export class NavBar extends PureRenderComponent {
     }
 }
 
-NavBar.propTypes = {
+DisplayNavBar.propTypes = {
     latest: React.PropTypes.instanceOf(Map)
 }
 
@@ -64,6 +64,6 @@ export function mapStateToProps(state) {
     }
 }
 
-export const NavBarContainer = connect(mapStateToProps)(NavBar)
+export const NavBar = connect(mapStateToProps)(DisplayNavBar)
 
 

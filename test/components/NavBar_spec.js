@@ -2,13 +2,13 @@
 
 import React from 'react'
 import {findDOMNode} from 'react-dom'
-import {NavBar, mapStateToProps} from '../../src/components/NavBar'
+import {DisplayNavBar, mapStateToProps} from '../../src/components/NavBar'
 import {expect} from 'chai'
 import {fromJS,Map} from 'immutable'
 
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} from 'react-addons-test-utils'
 
-describe('NavBar', () => {
+describe('DisplayNavBar', () => {
     const data = {
         year: '2016',
         month: '12',
@@ -19,7 +19,7 @@ describe('NavBar', () => {
 
     it('renders a navbar', () => {
         const component = renderIntoDocument(
-            <NavBar latest={Map()}/>
+            <DisplayNavBar latest={Map()}/>
         )
 
         const navbar = scryRenderedDOMComponentsWithTag(component, 'nav')
@@ -28,7 +28,7 @@ describe('NavBar', () => {
 
     it('has a home link', () => {
         const component = renderIntoDocument(
-            <NavBar latest={Map()}/>
+            <DisplayNavBar latest={Map()}/>
         )
 
         const brandLink = scryRenderedDOMComponentsWithClass(component, 'navbar-brand')
@@ -38,7 +38,7 @@ describe('NavBar', () => {
 
     it('has an archive link', () => {
         const component = renderIntoDocument(
-            <NavBar latest={Map()}/>
+            <DisplayNavBar latest={Map()}/>
         )
 
         const archive = findDOMNode(component.refs.archive)
@@ -47,7 +47,7 @@ describe('NavBar', () => {
 
     it('has a latest link', () => {
         const component = renderIntoDocument(
-            <NavBar latest={fromJS(data)}/>
+            <DisplayNavBar latest={fromJS(data)}/>
         )
 
         const latest = findDOMNode(component.refs.latestNav)

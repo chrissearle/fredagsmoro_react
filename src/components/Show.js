@@ -5,7 +5,7 @@ import {PureRenderComponent} from './PureRenderComponent'
 import {weekDisplayTitle} from '../helpers'
 import {Image} from './Image'
 
-export class Show extends PureRenderComponent {
+export class Entry extends PureRenderComponent {
 
     filterTree(haystack, needle) {
         function nameFilter(value) {
@@ -65,6 +65,6 @@ export function mapStateToProps(state) {
     }
 }
 
-export const ShowContainer = connect(mapStateToProps)(Show)
+export const Show = connect(mapStateToProps)(Entry)
 
 

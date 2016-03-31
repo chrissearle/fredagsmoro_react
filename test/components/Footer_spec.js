@@ -1,13 +1,13 @@
 /* globals describe, it */
 
 import React from 'react'
-import {Footer, mapStateToProps} from '../../src/components/Footer'
+import {DisplayFooter, mapStateToProps} from '../../src/components/Footer'
 import {expect} from 'chai'
 import {fromJS, Map} from 'immutable'
 
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils'
 
-describe('Footer', () => {
+describe('DisplayFooter', () => {
 
     const people = [
         {
@@ -24,7 +24,7 @@ describe('Footer', () => {
 
     it('renders a footer', () => {
         const component = renderIntoDocument(
-            <Footer people={fromJS([])} />
+            <DisplayFooter people={fromJS([])} />
         )
 
         const footer =  scryRenderedDOMComponentsWithTag(component, 'footer')
@@ -33,7 +33,7 @@ describe('Footer', () => {
 
     it('renders the slogan', () => {
         const component = renderIntoDocument(
-            <Footer people={fromJS([])} />
+            <DisplayFooter people={fromJS([])} />
         )
 
         const cells =  scryRenderedDOMComponentsWithTag(component, 'div')
@@ -44,7 +44,7 @@ describe('Footer', () => {
 
     it('renders the correct images', () => {
         const component = renderIntoDocument(
-            <Footer people={fromJS(people)} />
+            <DisplayFooter people={fromJS(people)} />
         )
 
         const images = scryRenderedDOMComponentsWithTag(component, 'img')
@@ -57,7 +57,7 @@ describe('Footer', () => {
 
     it('renders the correct information', () => {
         const component = renderIntoDocument(
-            <Footer people={fromJS(people)} />
+            <DisplayFooter people={fromJS(people)} />
         )
 
         const cells =  scryRenderedDOMComponentsWithTag(component, 'div')

@@ -1,7 +1,7 @@
 /* globals describe, it */
 
 import React from 'react'
-import {Archive, mapStateToProps} from '../../src/components/Archive'
+import {DisplayArchive, mapStateToProps} from '../../src/components/Archive'
 import {expect} from 'chai'
 import {fromJS} from 'immutable'
 
@@ -13,7 +13,7 @@ import {
     scryRenderedDOMComponentsWithClass
 } from 'react-addons-test-utils'
 
-describe('Archive', () => {
+describe('DisplayArchive', () => {
     const data = [
         {
             'name': '2011',
@@ -90,7 +90,7 @@ describe('Archive', () => {
     it('creates the correct structure', () => {
         const renderer = TestUtils.createRenderer()
 
-        renderer.render(<Archive data={fromJS(data)}/>)
+        renderer.render(<DisplayArchive data={fromJS(data)}/>)
 
         const output = renderer.getRenderOutput()
 

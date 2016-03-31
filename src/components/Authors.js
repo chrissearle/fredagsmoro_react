@@ -32,12 +32,3 @@ export class Authors extends PureRenderComponent {
 Authors.propTypes = {
     people: React.PropTypes.instanceOf(List).isRequired
 }
-
-export function mapStateToProps(state) {
-    return {
-        people: state.data.get('people')
-    }
-}
-
-export const AuthorsContainer = connect(mapStateToProps)(Authors)
-
