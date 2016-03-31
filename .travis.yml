@@ -3,4 +3,5 @@ node_js:
   - stable
 script:
   - npm run lint
-  - npm run test:ci
+  - npm run test:coverage
+after_success: npm run coverage:codecov
