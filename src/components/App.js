@@ -13,11 +13,9 @@ export default React.createClass({
                     <div className="row">
                         {this.props.children}
                     </div>
-
-                    <div className="row">
-                        <Footer/>
-                    </div>
                 </div>
+
+                <Footer/>
             </div>
         )
     }
