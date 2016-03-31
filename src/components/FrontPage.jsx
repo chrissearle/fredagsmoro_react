@@ -53,7 +53,7 @@ FrontPage.propTypes = {
 
 
 export function mapStateToProps(state) {
-    let props = {
+    const props = {
         latest: getLatestFromState(state, defaultState)
     }
 

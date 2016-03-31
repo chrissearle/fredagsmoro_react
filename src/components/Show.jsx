@@ -9,7 +9,7 @@ export class Show extends PureRenderComponent {
 
     filterTree(haystack, needle) {
         function nameFilter(value) {
-            return value.get('name') === needle;
+            return value.get('name') === needle
         }
 
         return haystack.valueSeq().filter(nameFilter).first()
