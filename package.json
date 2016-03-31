@@ -11,7 +11,7 @@
     "docker:deploy": "./scripts/deploy_image.sh",
     "doit": "./scripts/doit.sh",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js)'",
-    "test:coverage": "nyc npm run test",
+    "test:coverage": "nyc -a --require babel-core/register --require babel-polyfill npm run test",
     "test:watch": "npm run test -- --watch",
     "coverage:report": "nyc report --reporter=lcov",
     "coverage:codecov": "npm run coverage:report && codecov",
@@ -22,6 +22,9 @@
       "es2015",
       "react"
     ]
+  },
+  "nyc": {
+    "include": ["src/**"]
   },
   "devDependencies": {
     "babel-core": "^6.5.1",
