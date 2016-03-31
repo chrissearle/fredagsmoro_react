@@ -12,8 +12,8 @@
     "doit": "./scripts/doit.sh",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js)'",
     "test:watch": "npm run test -- --watch",
-    "test:coverage": "nyc npm run test; nyc report --reporter=lcov",
-    "test:ci": "nyc npm run test; nyc report --reporter=lcov && codecov",
+    "test:coverage": "nyc npm run test && nyc report --reporter=lcov",
+    "test:ci": "npm run test:coverage && codecov",
     "start": "webpack-dev-server --config webpack-dev.config.js"
   },
   "babel": {
