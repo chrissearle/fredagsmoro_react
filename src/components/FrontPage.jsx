@@ -52,12 +52,12 @@ FrontPage.propTypes = {
 }
 
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
     let props = {
         latest: getLatestFromState(state, defaultState)
     }
 
-    if (state.data.has('people')) {
+    if (state.data && state.data.has('people')) {
         props.people = state.data.get('people')
     }
 

@@ -1,14 +1,21 @@
 /* globals describe, it */
 
-import React from 'react/addons'
+import React from 'react'
 import {findDOMNode} from 'react-dom'
-import {NavBar} from '../../src/components/NavBar'
+import {NavBar, mapStateToProps} from '../../src/components/NavBar'
 import {expect} from 'chai'
 import {fromJS,Map} from 'immutable'
 
-const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} = React.addons.TestUtils
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} from 'react-addons-test-utils'
 
 describe('NavBar', () => {
+    const data = {
+        year: '2016',
+        month: '12',
+        date: '07',
+        title: 'December 7, 2016',
+        link: '/2016/12/07/'
+    }
 
     it('renders a navbar', () => {
         const component = renderIntoDocument(
@@ -39,19 +46,64 @@ describe('NavBar', () => {
     })
 
     it('has a latest link', () => {
-        const data = {
-            year: '2016',
-            month: '12',
-            date: '07',
-            title: 'December 7, 2016',
-            link: '/2016/12/07/'
-        }
-
         const component = renderIntoDocument(
             <NavBar latest={fromJS(data)}/>
         )
 
         const latest = findDOMNode(component.refs.latestNav)
         expect(latest.textContent).to.equal('December 7, 2016')
+    })
+
+    it('maps state to correct props with no data', () => {
+        const props = mapStateToProps({})
+
+        expect(props.latest).to.equal(Map())
+    })
+
+    it('maps state to correct props', () => {
+        const props = mapStateToProps({
+            data: fromJS(Map(
+                {
+                    data: fromJS([
+                        {
+                            'name': '2011',
+                            'tree': [
+                                {
+                                    'name': '05',
+                                    'tree': [
+                                        {
+                                            'name': '06'
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            'name': '2016',
+                            'tree': [
+                                {
+                                    'name': '05',
+                                    'tree': [
+                                        {
+                                            'name': '06'
+                                        }
+                                    ]
+                                },
+                                {
+                                    'name': '12',
+                                    'tree': [
+                                        {
+                                            'name': '07'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ])
+                }
+            ))
+        })
+
+        expect(props.latest.toJS()).to.deep.equal(data)
     })
 })

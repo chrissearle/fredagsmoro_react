@@ -14,7 +14,17 @@ export function monthArchiveTitle(month) {
 }
 
 export function getLatestFromState(state, defaultValue) {
+    if (state === undefined) {
+        return defaultValue
+    }
+
     const data = state.data
+
+    if (data === undefined) {
+        return defaultValue
+    }
+
+
 
     if (data.has('data')) {
         if (data.get('data').size > 0) {

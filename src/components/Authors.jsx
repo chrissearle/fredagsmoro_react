@@ -33,7 +33,7 @@ Authors.propTypes = {
     people: React.PropTypes.instanceOf(List).isRequired
 }
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
     return {
         people: state.data.get('people')
     }

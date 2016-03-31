@@ -63,4 +63,20 @@ describe('reducer', () => {
             data: []
         }))
     })
+
+    it('handles unknown actions', () => {
+        const action = {
+            type: 'AN_UNKNOWN_TYPE',
+            data: {
+                state: Map()
+            }
+        }
+
+        const nextState = reducer(undefined, action)
+
+        expect(nextState).to.equal(fromJS({
+            people: [],
+            data: []
+        }))
+    })
 })

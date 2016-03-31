@@ -1,11 +1,11 @@
 /* globals describe, it */
 
-import React from 'react/addons'
-import {Authors} from '../../src/components/Authors'
+import React from 'react'
+import {Authors, mapStateToProps} from '../../src/components/Authors'
 import {expect} from 'chai'
-import {fromJS} from 'immutable'
+import {fromJS, Map} from 'immutable'
 
-const {renderIntoDocument, scryRenderedDOMComponentsWithTag} = React.addons.TestUtils
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils'
 
 describe('Authors', () => {
 
@@ -24,16 +24,16 @@ describe('Authors', () => {
 
     it('renders a table', () => {
         const component = renderIntoDocument(
-            <Authors people={fromJS(people)} />
+            <Authors people={fromJS(people)}/>
         )
 
-        const table =  scryRenderedDOMComponentsWithTag(component, 'table')
+        const table = scryRenderedDOMComponentsWithTag(component, 'table')
         expect(table.length).to.equal(1)
     })
 
     it('renders the correct images', () => {
         const component = renderIntoDocument(
-            <Authors people={fromJS(people)} />
+            <Authors people={fromJS(people)}/>
         )
 
         const images = scryRenderedDOMComponentsWithTag(component, 'img')
@@ -46,10 +46,10 @@ describe('Authors', () => {
 
     it('renders a row per person', () => {
         const component = renderIntoDocument(
-            <Authors people={fromJS(people)} />
+            <Authors people={fromJS(people)}/>
         )
 
-        const rows =  scryRenderedDOMComponentsWithTag(component, 'tr')
+        const rows = scryRenderedDOMComponentsWithTag(component, 'tr')
         expect(rows.length).to.equal(3)
 
         expect(rows[1].children[1].textContent).to.contain('Person 1')
@@ -57,5 +57,19 @@ describe('Authors', () => {
 
         expect(rows[2].children[1].textContent).to.contain('Person 2')
         expect(rows[2].children[2].textContent).to.contain('Period 2')
+    })
+
+    it('maps state to correct props', () => {
+        const props = mapStateToProps({
+            data: fromJS(Map(
+                {
+                    people: people
+                }
+            ))
+        })
+
+        expect(props).to.deep.equal({
+            people: people
+        })
     })
 })

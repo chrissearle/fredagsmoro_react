@@ -61,4 +61,32 @@ describe('getLatestFromState', () => {
         expect(latest.get('title')).to.equal('December 31, 2015')
         expect(latest.get('link')).to.equal('/2015/12/31/')
     })
+
+    it('returns the default state if no state passed', () => {
+        const latest = getLatestFromState(undefined, Map())
+
+        expect(latest).to.equal(Map())
+    })
+
+    it('returns the default state if state with no data passed', () => {
+        const latest = getLatestFromState({}, Map())
+
+        expect(latest).to.equal(Map())
+    })
+
+    it('returns the default state if state with no date data passed', () => {
+        const latest = getLatestFromState({
+            data: fromJS({})
+        }, Map())
+
+        expect(latest).to.equal(Map())
+    })
+
+    it('returns the default state if state with empty date data passed', () => {
+        const latest = getLatestFromState({
+            data: fromJS({data: []})
+        }, Map())
+
+        expect(latest).to.equal(Map())
+    })
 })
