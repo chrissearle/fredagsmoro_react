@@ -87,7 +87,7 @@ describe('FrontPage', () => {
 
         expect(props.people).to.be.undefined
     })
-    
+
     it('maps state to correct props', () => {
         const props = mapStateToProps({
             data: fromJS(Map(
