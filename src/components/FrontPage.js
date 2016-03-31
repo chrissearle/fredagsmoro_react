@@ -10,7 +10,7 @@ import {Authors} from './Authors'
 
 const defaultState = Map()
 
-export class FrontPage extends PureRenderComponent {
+export class DisplayFrontPage extends PureRenderComponent {
     getTitle() {
         return this.props.latest.get('title')
     }
@@ -46,7 +46,7 @@ export class FrontPage extends PureRenderComponent {
     }
 }
 
-FrontPage.propTypes = {
+DisplayFrontPage.propTypes = {
     latest: React.PropTypes.instanceOf(Map).isRequired,
     people: React.PropTypes.instanceOf(List)
 }
@@ -64,6 +64,6 @@ export function mapStateToProps(state) {
     return props
 }
 
-export const FrontPageContainer = connect(mapStateToProps)(FrontPage)
+export const FrontPage = connect(mapStateToProps)(DisplayFrontPage)
 
 

@@ -1,7 +1,7 @@
 /* globals describe, it */
 
 import React from 'react'
-import {FrontPage, mapStateToProps} from '../../src/components/FrontPage'
+import {DisplayFrontPage, mapStateToProps} from '../../src/components/FrontPage'
 import {expect} from 'chai'
 import {fromJS, Map} from 'immutable'
 
@@ -11,7 +11,7 @@ import {
     scryRenderedDOMComponentsWithClass
 } from 'react-addons-test-utils'
 
-describe('FrontPage', () => {
+describe('DisplayFrontPage', () => {
     const people = [
         {
             'name': 'Person 1',
@@ -36,7 +36,7 @@ describe('FrontPage', () => {
 
     it('renders a jumbotron', () => {
         const component = renderIntoDocument(
-            <FrontPage latest={Map()}/>
+            <DisplayFrontPage latest={Map()}/>
         )
 
         const jumbo = scryRenderedDOMComponentsWithClass(component, 'jumbotron')
@@ -45,7 +45,7 @@ describe('FrontPage', () => {
 
     it('has a title', () => {
         const component = renderIntoDocument(
-            <FrontPage latest={Map()}/>
+            <DisplayFrontPage latest={Map()}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
@@ -55,7 +55,7 @@ describe('FrontPage', () => {
 
     it('has an archive link', () => {
         const component = renderIntoDocument(
-            <FrontPage latest={Map(data)}/>
+            <DisplayFrontPage latest={Map(data)}/>
         )
 
         const archive = scryRenderedDOMComponentsWithClass(component, 'archive')
@@ -65,7 +65,7 @@ describe('FrontPage', () => {
 
     it('has a latest link', () => {
         const component = renderIntoDocument(
-            <FrontPage latest={fromJS(data)}/>
+            <DisplayFrontPage latest={fromJS(data)}/>
         )
 
         const latest = scryRenderedDOMComponentsWithClass(component, 'latest')
@@ -75,7 +75,7 @@ describe('FrontPage', () => {
 
     it('has an authors block', () => {
         const component = renderIntoDocument(
-            <FrontPage latest={Map()} people={fromJS(people)}/>
+            <DisplayFrontPage latest={Map()} people={fromJS(people)}/>
         )
 
         const authors = scryRenderedDOMComponentsWithClass(component, 'table')

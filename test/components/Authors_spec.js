@@ -1,7 +1,7 @@
 /* globals describe, it */
 
 import React from 'react'
-import {Authors, mapStateToProps} from '../../src/components/Authors'
+import {Authors} from '../../src/components/Authors'
 import {expect} from 'chai'
 import {fromJS, Map} from 'immutable'
 
@@ -57,19 +57,5 @@ describe('Authors', () => {
 
         expect(rows[2].children[1].textContent).to.contain('Person 2')
         expect(rows[2].children[2].textContent).to.contain('Period 2')
-    })
-
-    it('maps state to correct props', () => {
-        const props = mapStateToProps({
-            data: fromJS(Map(
-                {
-                    people: people
-                }
-            ))
-        })
-
-        expect(props).to.deep.equal({
-            people: people
-        })
     })
 })

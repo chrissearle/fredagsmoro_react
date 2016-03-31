@@ -3,7 +3,7 @@
 import 'babel-polyfill'
 
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {render} from 'react-dom'
 
 import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
 
@@ -19,12 +19,10 @@ import $ from 'jquery'
 
 import reducer from './reducer'
 
-import {App} from './components/App'
-import {FrontPageContainer} from './components/FrontPage'
-import {ArchiveContainer} from './components/Archive'
-import {ShowContainer} from './components/Show'
-import {FooterContainer} from './components/Footer'
-import {NavBarContainer} from './components/NavBar'
+import App from './components/App'
+import {FrontPage} from './components/FrontPage'
+import {Archive} from './components/Archive'
+import {Show} from './components/Show'
 
 const store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(
     combineReducers({
@@ -52,42 +50,22 @@ $.get('/people.json', function (people) {
     })
 })
 
-const routes = <Route path="/" component={App}>
-    <IndexRoute component={FrontPageContainer}/>
-    <Route path="/archive" component={ArchiveContainer}/>
-    <Route path="/:year/:month/:day" component={ShowContainer}/>
-    <Redirect from="*" to="/"/>
-</Route>
-
-const headerRoutes = <Route path="/" component={App}>
-    <IndexRoute component={NavBarContainer}/>
-    <Route path="*" component={NavBarContainer}/>
-</Route>
-
 if (typeof GA_TRACKING_CODE !== 'undefined') {
     history.listen(location => {
         ga('send', 'pageview', location.pathname)
     })
 }
 
-ReactDOM.render(
+render((
     <Provider store={store}>
-        <Router history={history}>{routes}</Router>
-    </Provider>,
-    document.getElementById('app')
-)
+        <Router history={history}>
+            <Route path="/" component={App}>
+                <IndexRoute component={FrontPage}/>
 
-ReactDOM.render(
-    <Provider store={store}>
-        <FooterContainer/>
-    </Provider>,
-    document.getElementById('footer')
-)
-
-ReactDOM.render(
-    <Provider store={store}>
-        <Router history={history}>{headerRoutes}</Router>
-    </Provider>,
-    document.getElementById('navbar')
-)
-
+                <Route path="/archive" component={Archive}/>
+                <Route path="/:year/:month/:day" component={Show}/>
+                <Redirect from="*" to="/"/>
+            </Route>
+        </Router>
+    </Provider>
+), document.getElementById('app'))

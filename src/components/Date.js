@@ -42,7 +42,6 @@ export class Date extends PureRenderComponent {
     }
 }
 
-
 Date.propTypes = {
     date: React.PropTypes.instanceOf(Map).isRequired,
     month: React.PropTypes.string.isRequired,

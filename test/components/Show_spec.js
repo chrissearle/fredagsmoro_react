@@ -1,7 +1,7 @@
 /* globals describe, it */
 
 import React from 'react'
-import {Show, mapStateToProps} from '../../src/components/Show'
+import {Entry, mapStateToProps} from '../../src/components/Show'
 import {expect} from 'chai'
 import {fromJS,Map} from 'immutable'
 
@@ -11,7 +11,7 @@ import {
     scryRenderedDOMComponentsWithClass
 } from 'react-addons-test-utils'
 
-describe('Show', () => {
+describe('Entry', () => {
 
     const data = [
         {
@@ -51,7 +51,7 @@ describe('Show', () => {
 
     it('renders the correct title', () => {
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={params}/>
+            <Entry data={fromJS(data)} params={params}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
@@ -61,7 +61,7 @@ describe('Show', () => {
 
     it('renders the correct images', () => {
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={params}/>
+            <Entry data={fromJS(data)} params={params}/>
         )
 
         const images = scryRenderedDOMComponentsWithTag(component, 'img')
@@ -72,7 +72,7 @@ describe('Show', () => {
 
     it('renders the correct videos', () => {
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={params}/>
+            <Entry data={fromJS(data)} params={params}/>
         )
 
         const videos = scryRenderedDOMComponentsWithTag(component, 'video')
@@ -81,7 +81,7 @@ describe('Show', () => {
 
     it('renders direct links', () => {
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={params}/>
+            <Entry data={fromJS(data)} params={params}/>
         )
 
         const buttons = scryRenderedDOMComponentsWithClass(component, 'btn-primary')
@@ -106,7 +106,7 @@ describe('Show', () => {
 
     it('handles missing data', () => {
         const component = renderIntoDocument(
-            <Show data={fromJS([])} params={params}/>
+            <Entry data={fromJS([])} params={params}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
@@ -122,7 +122,7 @@ describe('Show', () => {
         }
 
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={nonMatchingParams}/>
+            <Entry data={fromJS(data)} params={nonMatchingParams}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
@@ -138,7 +138,7 @@ describe('Show', () => {
         }
 
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={nonMatchingParams}/>
+            <Entry data={fromJS(data)} params={nonMatchingParams}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')
@@ -154,7 +154,7 @@ describe('Show', () => {
         }
 
         const component = renderIntoDocument(
-            <Show data={fromJS(data)} params={nonMatchingParams}/>
+            <Entry data={fromJS(data)} params={nonMatchingParams}/>
         )
 
         const title = scryRenderedDOMComponentsWithTag(component, 'h1')

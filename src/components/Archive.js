@@ -5,9 +5,7 @@ import {List} from 'immutable'
 import {PureRenderComponent} from './PureRenderComponent'
 import {Year} from './Year'
 
-const defaultState = List()
-
-export class Archive extends PureRenderComponent {
+export class DisplayArchive extends PureRenderComponent {
     getData() {
         return this.props.data.sortBy(year => -year.get('name'))
     }
@@ -21,7 +19,7 @@ export class Archive extends PureRenderComponent {
     }
 }
 
-Archive.propTypes = {
+DisplayArchive.propTypes = {
     data: React.PropTypes.instanceOf(List).isRequired
 }
 
@@ -35,6 +33,6 @@ export function mapStateToProps(state) {
     return props
 }
 
-export const ArchiveContainer = connect(mapStateToProps)(Archive)
+export const Archive = connect(mapStateToProps)(DisplayArchive)
 
 

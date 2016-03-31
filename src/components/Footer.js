@@ -4,7 +4,7 @@ import {List} from 'immutable'
 
 import {PureRenderComponent} from './PureRenderComponent'
 
-export class Footer extends PureRenderComponent {
+export class DisplayFooter extends PureRenderComponent {
     getPeople() {
         return this.props.people
     }
@@ -34,7 +34,7 @@ export class Footer extends PureRenderComponent {
     }
 }
 
-Footer.propTypes = {
+DisplayFooter.propTypes = {
     people: React.PropTypes.instanceOf(List).isRequired
 }
 
@@ -44,5 +44,5 @@ export function mapStateToProps(state) {
     }
 }
 
-export const FooterContainer = connect(mapStateToProps)(Footer)
+export const Footer = connect(mapStateToProps)(DisplayFooter)
 
