@@ -58,7 +58,7 @@ NavBar.propTypes = {
     latest: React.PropTypes.instanceOf(Map)
 }
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
     return {
         latest: getLatestFromState(state, defaultState)
     }

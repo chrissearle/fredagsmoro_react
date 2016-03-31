@@ -1,11 +1,11 @@
 /* globals describe, it */
 
-import React from 'react/addons'
+import React from 'react'
 import {Year} from '../../src/components/Year'
 import {expect} from 'chai'
 import {fromJS} from 'immutable'
 
-const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} = React.addons.TestUtils
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} from 'react-addons-test-utils'
 
 describe('Calendar', () => {
 

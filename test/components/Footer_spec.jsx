@@ -1,11 +1,11 @@
 /* globals describe, it */
 
-import React from 'react/addons'
-import {Footer} from '../../src/components/Footer'
+import React from 'react'
+import {Footer, mapStateToProps} from '../../src/components/Footer'
 import {expect} from 'chai'
-import {fromJS} from 'immutable'
+import {fromJS, Map} from 'immutable'
 
-const {renderIntoDocument, scryRenderedDOMComponentsWithTag} = React.addons.TestUtils
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils'
 
 describe('Footer', () => {
 
@@ -67,5 +67,19 @@ describe('Footer', () => {
         expect(cells[2].textContent).to.contain('Period 1')
         expect(cells[4].textContent).to.contain('Person 2')
         expect(cells[4].textContent).to.contain('Period 2')
+    })
+
+    it('maps state to correct props', () => {
+        const props = mapStateToProps({
+            data: fromJS(Map(
+                {
+                    people: people
+                }
+            ))
+        })
+
+        expect(props).to.deep.equal({
+            people: people
+        })
     })
 })

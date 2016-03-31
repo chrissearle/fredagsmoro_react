@@ -1,11 +1,15 @@
 /* globals describe, it */
 
-import React from 'react/addons'
-import {Show} from '../../src/components/Show'
+import React from 'react'
+import {Show, mapStateToProps} from '../../src/components/Show'
 import {expect} from 'chai'
-import {fromJS} from 'immutable'
+import {fromJS,Map} from 'immutable'
 
-const {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass} = React.addons.TestUtils
+import {
+    renderIntoDocument,
+    scryRenderedDOMComponentsWithTag,
+    scryRenderedDOMComponentsWithClass
+} from 'react-addons-test-utils'
 
 describe('Show', () => {
 
@@ -73,12 +77,6 @@ describe('Show', () => {
 
         const videos = scryRenderedDOMComponentsWithTag(component, 'video')
         expect(videos.length).to.equal(2)
-        /*
-        For some reason jsdom isn't populating the src element. It's working in the browser
-
-        expect(videos[0].src).to.equal('/content/2016/01/22/eUAZk6c.webm')
-        expect(videos[1].src).to.equal('/content/2016/01/22/uMOgiO9.mp4')
-         */
     })
 
     it('renders direct links', () => {
@@ -92,5 +90,75 @@ describe('Show', () => {
         expect(buttons[1].href).to.equal('/content/2016/01/22/eUAZk6c.webm')
         expect(buttons[2].href).to.equal('/content/2016/01/22/kreditt.png')
         expect(buttons[3].href).to.equal('/content/2016/01/22/uMOgiO9.mp4')
+    })
+
+    it('maps state to correct props', () => {
+        const props = mapStateToProps({
+            data: fromJS(Map(
+                {
+                    data: []
+                }
+            ))
+        })
+
+        expect(props.data).to.deep.equal([])
+    })
+
+    it('handles missing data', () => {
+        const component = renderIntoDocument(
+            <Show data={fromJS([])} params={params}/>
+        )
+
+        const title = scryRenderedDOMComponentsWithTag(component, 'h1')
+        expect(title.length).to.equal(1)
+        expect(title[0].textContent).to.equal('Missing entry')
+    })
+
+    it('handles no matching year', () => {
+        const nonMatchingParams = {
+            year: '2015',
+            month: '02',
+            day: '23'
+        }
+
+        const component = renderIntoDocument(
+            <Show data={fromJS(data)} params={nonMatchingParams}/>
+        )
+
+        const title = scryRenderedDOMComponentsWithTag(component, 'h1')
+        expect(title.length).to.equal(1)
+        expect(title[0].textContent).to.equal('Missing entry')
+    })
+
+    it('handles no matching month', () => {
+        const nonMatchingParams = {
+            year: '2016',
+            month: '02',
+            day: '23'
+        }
+
+        const component = renderIntoDocument(
+            <Show data={fromJS(data)} params={nonMatchingParams}/>
+        )
+
+        const title = scryRenderedDOMComponentsWithTag(component, 'h1')
+        expect(title.length).to.equal(1)
+        expect(title[0].textContent).to.equal('Missing entry')
+    })
+
+    it('handles no matching date', () => {
+        const nonMatchingParams = {
+            year: '2016',
+            month: '01',
+            day: '23'
+        }
+
+        const component = renderIntoDocument(
+            <Show data={fromJS(data)} params={nonMatchingParams}/>
+        )
+
+        const title = scryRenderedDOMComponentsWithTag(component, 'h1')
+        expect(title.length).to.equal(1)
+        expect(title[0].textContent).to.equal('Missing entry')
     })
 })

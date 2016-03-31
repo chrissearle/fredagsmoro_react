@@ -6,3 +6,5 @@ dropbox.yml
 *.eot
 *.woff
 bundle.js
+.nyc_output
+coverage
