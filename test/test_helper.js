@@ -4,7 +4,9 @@ import jsdom from 'jsdom'
 import chai from 'chai'
 import chaiImmutable from 'chai-immutable'
 
-const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
+const doc = jsdom.jsdom('<!doctype html><html><body><div id="navbar"></div><div id="app"></div><div id="footer"></div></body></html>', {
+    url: 'http://localhost'
+})
 const win = doc.defaultView
 
 global.document = doc
