@@ -1,5 +1,3 @@
-/* globals describe, it */
-
 import React from 'react'
 import {Entry, mapStateToProps} from '../../src/components/Show'
 import {expect} from 'chai'

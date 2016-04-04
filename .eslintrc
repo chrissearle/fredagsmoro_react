@@ -36,5 +36,14 @@
     "no-trailing-spaces": 2,
     "no-mixed-spaces-and-tabs": 2,
     "indent": [2, 4, {"SwitchCase": 1}]
+  },
+  "globals": {
+    "fetch": false,
+    "afterEach": false,
+    "describe": false,
+    "it": false,
+    "global": false,
+    "window": false,
+    "document": false
   }
 }
