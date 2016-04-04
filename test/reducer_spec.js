@@ -3,7 +3,10 @@
 import {List, Map, fromJS} from 'immutable'
 import {expect} from 'chai'
 
-import reducer from '../src/reducer'
+import {updateData} from '../src/actions/data'
+import {updatePeople} from '../src/actions/people'
+
+import reducer from '../src/reducers/reducer'
 
 describe('reducer', () => {
     const people = [
@@ -19,21 +22,53 @@ describe('reducer', () => {
         }
     ]
 
-    it('handles SET_STATE', () => {
-        const initialState = Map()
-
-        const action = {
-            type: 'SET_STATE',
-            data: {
-                state: Map(
-                    {
-                        people: fromJS(people),
-                        data: List()
-
-                    }
-                )
-            }
+    const data = [
+        {
+            'name': '2011',
+            'tree': [
+                {
+                    'name': '05',
+                    'tree': [
+                        {
+                            'name': '06'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            'name': '2015',
+            'tree': [
+                {
+                    'name': '05',
+                    'tree': [
+                        {
+                            'name': '06'
+                        }
+                    ]
+                },
+                {
+                    'name': '12',
+                    'tree': [
+                        {
+                            'name': '06'
+                        },
+                        {
+                            'name': '31'
+                        }
+                    ]
+                }
+            ]
         }
+    ]
+
+    it('handles UPDATE_PEOPLE', () => {
+        const initialState = fromJS({
+            people: [],
+            data: []
+        })
+
+        const action = updatePeople(people)
 
         const nextState = reducer(initialState, action)
 
@@ -43,24 +78,41 @@ describe('reducer', () => {
         }))
     })
 
-    it('handles SET_STATE without initial state', () => {
-        const action = {
-            type: 'SET_STATE',
-            data: {
-                state: Map(
-                    {
-                        people: fromJS(people),
-                        data: List()
-                    }
-                )
-            }
-        }
+    it('handles UPDATE_PEOPLE without initial state', () => {
+        const action = updatePeople(people)
 
         const nextState = reducer(undefined, action)
 
         expect(nextState).to.equal(fromJS({
             people: people,
             data: []
+        }))
+    })
+
+    it('handles UPDATE_DATA', () => {
+        const initialState = fromJS({
+            people: [],
+            data: []
+        })
+
+        const action = updateData(data)
+
+        const nextState = reducer(initialState, action)
+
+        expect(nextState).to.equal(fromJS({
+            people: [],
+            data: data
+        }))
+    })
+
+    it('handles UPDATE_DATA without initial state', () => {
+        const action = updateData(data)
+
+        const nextState = reducer(undefined, action)
+
+        expect(nextState).to.equal(fromJS({
+            people: [],
+            data: data
         }))
     })
 
