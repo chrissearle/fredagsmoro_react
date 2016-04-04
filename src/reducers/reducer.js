@@ -11,8 +11,15 @@ function setState(state, newState) {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case 'SET_STATE':
-            return setState(state, action.data.state)
+        case 'UPDATE_DATA':
+            return setState(state, {
+                data: action.data
+            })
+        case 'UPDATE_PEOPLE':
+            return setState(state, {
+                people: action.people
+            })
     }
+
     return state
 }

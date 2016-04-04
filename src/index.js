@@ -2,22 +2,25 @@
 
 import 'babel-polyfill'
 
+import 'isomorphic-fetch'
+
 import React from 'react'
 import {render} from 'react-dom'
 
-import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
+import {Router, Route, IndexRoute, browserHistory, Redirect} from 'react-router'
 
-import { createStore, combineReducers } from 'redux'
+import {createStore, combineReducers} from 'redux'
 
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
 import ga from 'ga-react-router'
 
-import $ from 'jquery'
+import {fetchData} from './action_creators/data'
+import {fetchPeople} from './action_creators/people'
 
-import reducer from './reducer'
+import reducer from './reducers/reducer'
 
 import App from './components/App'
 import {FrontPage} from './components/FrontPage'
@@ -33,22 +36,8 @@ const store = (window.devToolsExtension ? window.devToolsExtension()(createStore
 
 const history = syncHistoryWithStore(browserHistory, store)
 
-// Quick Fix - since the data is static
-$.get('/people.json', function (people) {
-    $.get('/data.json', function (data) {
-        store.dispatch(
-            {
-                type: 'SET_STATE',
-                data: {
-                    state: {
-                        people: people,
-                        data: data
-                    }
-                }
-            }
-        )
-    })
-})
+fetchPeople()(store.dispatch)
+fetchData()(store.dispatch)
 
 if (typeof GA_TRACKING_CODE !== 'undefined') {
     history.listen(location => {
