@@ -1,5 +1,3 @@
-/* globals describe, it */
-
 import ReactDOM, {render} from 'react-dom'
 import {expect} from 'chai'
 import '../src/index'
