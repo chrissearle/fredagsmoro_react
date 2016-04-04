@@ -1,6 +1,7 @@
+/* eslint-env mocha */
 import {expect} from 'chai'
+import sinon from 'sinon'
 
-import nock from 'nock'
 import 'isomorphic-fetch'
 
 import {updateData} from '../src/actions/data'
@@ -10,9 +11,7 @@ import {fetchData} from '../src/action_creators/data'
 import {fetchPeople} from '../src/action_creators/people'
 
 
-// Currently skipped. Requires the URL in the action creators to be to //host/endpoint (here localhost) to get nock to
-// trigger but this locks the action creators to a given host instead of relative to where it's running from.
-describe.skip('action_creators', () => {
+describe('action_creators', () => {
     const people = [
         {
             'name': 'Ragnar Bergvik',
@@ -66,35 +65,27 @@ describe.skip('action_creators', () => {
         }
     ]
 
+    let sandbox
+
+    beforeEach(() => {
+        sandbox = sinon.sandbox.create()
+    })
+
     afterEach(() => {
-        nock.cleanAll()
+        sandbox.restore()
     })
 
-    it('fetches people', (done) => {
-        nock(/localhost/)
-            .get('/people.json')
-            .reply(200, people)
+    it('fetches people', () => {
+        sandbox.stub(global, 'fetch').returns(Promise.resolve({json: () => Promise.resolve(people)}))
 
-        const dispatch = action => {
-            expect(action).to.deep.equal(updatePeople(people))
-
-            done()
-        }
-
-        fetchPeople()(dispatch)
+        return new Promise(resolve => { fetchPeople()(resolve) })
+            .then(action => expect(action).to.deep.equal(updatePeople(people)))
     })
 
-    it('fetches data', (done) => {
-        nock(/localhost/)
-            .get('/data.json')
-            .reply(200, data)
+    it('fetches data', () => {
+        sandbox.stub(global, 'fetch').returns(Promise.resolve({json: () => Promise.resolve(data)}))
 
-        const dispatch = action => {
-            expect(action).to.deep.equal(updateData(data))
-
-            done()
-        }
-
-        fetchData()(dispatch)
+        return new Promise(resolve => { fetchData()(resolve) })
+            .then(action => expect(action).to.deep.equal(updateData(data)))
     })
 })
