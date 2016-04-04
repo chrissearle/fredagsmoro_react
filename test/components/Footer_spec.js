@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 import React from 'react'
 import {DisplayFooter, mapStateToProps} from '../../src/components/Footer'
 import {expect} from 'chai'

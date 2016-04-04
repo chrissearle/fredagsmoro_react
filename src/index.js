@@ -1,3 +1,4 @@
+/* globals window, document */
 import 'babel-polyfill'
 
 import 'isomorphic-fetch'

@@ -1,3 +1,4 @@
+/* globals fetch */
 import {updateData} from '../actions/data'
 
 export function fetchData() {

@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 import React from 'react'
 import {DisplayArchive, mapStateToProps} from '../../src/components/Archive'
 import {expect} from 'chai'

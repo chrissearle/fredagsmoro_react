@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 import {List, Map, fromJS} from 'immutable'
 import {expect} from 'chai'
 

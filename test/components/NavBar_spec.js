@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 import React from 'react'
 import {findDOMNode} from 'react-dom'
 import {DisplayNavBar, mapStateToProps} from '../../src/components/NavBar'

@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 import React from 'react'
 import {Authors} from '../../src/components/Authors'
 import {expect} from 'chai'

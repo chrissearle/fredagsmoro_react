@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* globals global */
 import {expect} from 'chai'
 import sinon from 'sinon'
 
@@ -9,7 +10,6 @@ import {updatePeople} from '../src/actions/people'
 
 import {fetchData} from '../src/action_creators/data'
 import {fetchPeople} from '../src/action_creators/people'
-
 
 describe('action_creators', () => {
     const people = [
@@ -78,14 +78,18 @@ describe('action_creators', () => {
     it('fetches people', () => {
         sandbox.stub(global, 'fetch').returns(Promise.resolve({json: () => Promise.resolve(people)}))
 
-        return new Promise(resolve => { fetchPeople()(resolve) })
+        return new Promise(resolve => {
+            fetchPeople()(resolve)
+        })
             .then(action => expect(action).to.deep.equal(updatePeople(people)))
     })
 
     it('fetches data', () => {
         sandbox.stub(global, 'fetch').returns(Promise.resolve({json: () => Promise.resolve(data)}))
 
-        return new Promise(resolve => { fetchData()(resolve) })
+        return new Promise(resolve => {
+            fetchData()(resolve)
+        })
             .then(action => expect(action).to.deep.equal(updateData(data)))
     })
 })

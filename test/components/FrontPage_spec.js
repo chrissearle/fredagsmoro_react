@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 import React from 'react'
 import {DisplayFrontPage, mapStateToProps} from '../../src/components/FrontPage'
 import {expect} from 'chai'
