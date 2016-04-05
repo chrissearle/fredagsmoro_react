@@ -11,7 +11,7 @@ import {fetchData} from '../action_creators/data'
 import {fetchPeople} from '../action_creators/people'
 
 export class ViewApp extends PureRenderComponent {
-    componentWillMount() {
+    componentDidMount() {
         this.props.updatePeople()
         this.props.updateData()
     }
