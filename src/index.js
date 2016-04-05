@@ -16,12 +16,9 @@ import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
 import ga from 'ga-react-router'
 
-import {fetchData} from './action_creators/data'
-import {fetchPeople} from './action_creators/people'
-
 import reducer from './reducers/reducer'
 
-import App from './components/App'
+import {App} from './components/App'
 import {FrontPage} from './components/FrontPage'
 import {Archive} from './components/Archive'
 import {Show} from './components/Show'
@@ -34,9 +31,6 @@ const store = (window.devToolsExtension ? window.devToolsExtension()(createStore
 )
 
 const history = syncHistoryWithStore(browserHistory, store)
-
-fetchPeople()(store.dispatch)
-fetchData()(store.dispatch)
 
 if (typeof GA_TRACKING_CODE !== 'undefined') {
     history.listen(location => {
