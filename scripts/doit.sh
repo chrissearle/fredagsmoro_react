@@ -1,6 +1,7 @@
 #!/bin/sh
 
 git pull
+npm install
 npm run content:dropbox
 npm run content:data
 git add .
