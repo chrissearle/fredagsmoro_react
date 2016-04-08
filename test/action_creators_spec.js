@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-/* globals global */
+/* globals global, Promise */
 import {expect} from 'chai'
 import sinon from 'sinon'
 
