@@ -17,12 +17,6 @@
     "coverage:codecov": "npm run coverage:report && codecov",
     "start": "webpack-dev-server --config webpack-dev.config.js"
   },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
-  },
   "nyc": {
     "include": [
       "src/**"
