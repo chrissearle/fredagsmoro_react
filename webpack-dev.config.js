@@ -21,7 +21,9 @@ module.exports = _.assign({}, baseConfig, {
     devServer: {
         contentBase: './build/site',
         historyApiFallback: true,
-        hot: true
+        hot: true,
+        inline: true,
+        color: true
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()

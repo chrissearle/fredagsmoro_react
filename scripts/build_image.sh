@@ -1,6 +1,6 @@
 #!/bin/sh
 
-webpack
+NODE_ENV=production webpack -p
 
 cd build
 
