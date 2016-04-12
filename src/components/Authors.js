@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {List} from 'immutable'
 
 import {PureRenderComponent} from './PureRenderComponent'

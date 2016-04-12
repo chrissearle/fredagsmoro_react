@@ -1,4 +1,4 @@
-import {fromJS, Map} from 'immutable'
+import {fromJS} from 'immutable'
 import moment from 'moment'
 
 export function weekDisplayTitle(year, month, day) {
@@ -23,8 +23,6 @@ export function getLatestFromState(state, defaultValue) {
     if (data === undefined) {
         return defaultValue
     }
-
-
 
     if (data.has('data')) {
         if (data.get('data').size > 0) {

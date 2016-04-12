@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import {List, Map, fromJS} from 'immutable'
+import {Map, fromJS} from 'immutable'
 import {expect} from 'chai'
 
 import {updateData} from '../src/actions/data'

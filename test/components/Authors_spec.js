@@ -2,7 +2,7 @@
 import React from 'react'
 import {Authors} from '../../src/components/Authors'
 import {expect} from 'chai'
-import {fromJS, Map} from 'immutable'
+import {fromJS} from 'immutable'
 
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils'
 

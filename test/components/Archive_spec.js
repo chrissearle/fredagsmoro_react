@@ -6,12 +6,6 @@ import {fromJS} from 'immutable'
 
 import TestUtils from 'react-addons-test-utils'
 
-import {
-    renderIntoDocument,
-    scryRenderedDOMComponentsWithTag,
-    scryRenderedDOMComponentsWithClass
-} from 'react-addons-test-utils'
-
 describe('DisplayArchive', () => {
     const data = [
         {

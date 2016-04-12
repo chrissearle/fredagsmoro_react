@@ -33,10 +33,6 @@ export class ViewApp extends PureRenderComponent {
     }
 }
 
-function mapStateToProps(state) {
-    return {}
-}
-
 function mapDispatchToProps(dispatch) {
     return {
         updatePeople: function () {
@@ -48,4 +44,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export const App = connect(mapStateToProps, mapDispatchToProps)(ViewApp)
+export const App = connect(() => {return {}}, mapDispatchToProps)(ViewApp)
