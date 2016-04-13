@@ -7,7 +7,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "mocha"
   ],
   "environment": {
     "browser": true,
@@ -25,6 +26,10 @@
     "no-trailing-spaces": 2,
     "no-mixed-spaces-and-tabs": 2,
     "indent": [2, 4, {"SwitchCase": 1}],
-    "eol-last": 2
+    "eol-last": 2,
+    "mocha/no-exclusive-tests": 2,
+    "mocha/no-skipped-tests": 2,
+    "mocha/handle-done-callback": 2,
+    "mocha/no-global-tests": 2
   }
 }
