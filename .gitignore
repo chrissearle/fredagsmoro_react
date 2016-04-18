@@ -8,3 +8,4 @@ dropbox.yml
 bundle.js
 .nyc_output
 coverage
+**/vendor/bundle
