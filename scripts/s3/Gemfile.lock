@@ -16,6 +16,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  aws-sdk-resources
 
 BUNDLED WITH
    1.11.2

@@ -23,9 +23,8 @@
   },
   "scripts": {
     "lint": "eslint src test",
-    "content:dropbox": "./scripts/dropbox.rb",
-    "content:data": "./scripts/build_data.rb > ./build/site/data.json",
-    "content:resize": "./scripts/resize.sh ./build/site/content",
+    "content:dropbox": "./scripts/dropbox.sh",
+    "content:data": "./scripts/build_data.sh",
     "docker:build": "./scripts/build_image.sh",
     "docker:deploy": "./scripts/deploy_image.sh",
     "doit": "./scripts/doit.sh",

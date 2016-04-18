@@ -15,7 +15,7 @@ A collection of random images from the net - collected by Karl Øgaard (previous
 
 * npm
 * a fairly recent ruby
-* git lfs installed (https://github.com/github/git-lfs)
+* a valid fredagsmoro config in ~/.aws/credentials
 
 ### Installation
 
@@ -36,9 +36,8 @@ You will need
 
 #### Updating scripts
 
-* `npm run content:dropbox` - move files from Dropbox into the site
-* `npm run content:data` - rebuild the data file
-* `npm run content:resize` - make sure no image is too large across the whole site. Not required for a new week - run just for that week as part of content:dropbox
+* `npm run content:dropbox` - move files from Dropbox onto S3
+* `npm run content:data` - rebuild the data file from the data on S3
 * `npm run docker:build` - create the image (also runs webpack)
 * `npm run docker:deploy` - deploy the image
 * `npm run doit` - git pull, grab files, make all updates, commit & push, build image and deploy
