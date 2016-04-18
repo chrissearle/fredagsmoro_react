@@ -18,10 +18,10 @@ describe('Calendar', () => {
                         'name': '06',
                         'tree': [
                             {
-                                'src': '/content/2011/05/06/image001.png'
+                                'src': '/2011/05/06/image001.png'
                             },
                             {
-                                'src': '/content/2011/05/06/image002.png'
+                                'src': '/2011/05/06/image002.png'
                             }
                         ]
                     }

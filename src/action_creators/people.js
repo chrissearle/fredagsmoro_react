@@ -5,8 +5,12 @@ export function fetchPeople() {
     return dispatch =>
         fetch('/people.json')
             .then(response => {
-                response.json().then(json => {
-                    dispatch(updatePeople(json))
-                })
+                return response.json()
+            })
+            .then(json => {
+                dispatch(updatePeople(json))
+            })
+            .catch(error => {
+                throw error
             })
 }

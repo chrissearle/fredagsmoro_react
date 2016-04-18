@@ -1,3 +1,5 @@
+/* globals CDN_PREFIX */
+
 import React from 'react'
 import {Map} from 'immutable'
 
@@ -25,7 +27,13 @@ class Video extends PureRenderComponent {
 
 export class Image extends PureRenderComponent {
     getSrc() {
-        return this.props.item.get('src')
+        let prefix = ''
+
+        if (typeof CDN_PREFIX !== 'undefined') {
+            prefix = CDN_PREFIX
+        }
+
+        return `${prefix}${this.props.item.get('src')}`
     }
 
     getType() {

@@ -21,9 +21,9 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            GA_TRACKING_CODE: JSON.stringify('UA-2221544-15')
-        }),
-        new webpack.DefinePlugin({
+            GA_TRACKING_CODE: JSON.stringify('UA-2221544-15'),
+            CDN_PREFIX: JSON.stringify('https://d1fw0azbwe58up.cloudfront.net'),
+            DATA_URL: JSON.stringify('https://d1fw0azbwe58up.cloudfront.net/data.json'),
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
         new webpack.optimize.UglifyJsPlugin({

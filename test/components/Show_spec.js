@@ -23,16 +23,16 @@ describe('Entry', () => {
                             name: '22',
                             tree: [
                                 {
-                                    src: '/content/2016/01/22/12571315_10156492193140341_1844409780_n.jpg'
+                                    src: '/2016/01/22/12571315_10156492193140341_1844409780_n.jpg'
                                 },
                                 {
-                                    src: '/content/2016/01/22/eUAZk6c.webm'
+                                    src: '/2016/01/22/eUAZk6c.webm'
                                 },
                                 {
-                                    src: '/content/2016/01/22/kreditt.png'
+                                    src: '/2016/01/22/kreditt.png'
                                 },
                                 {
-                                    src: '/content/2016/01/22/uMOgiO9.mp4'
+                                    src: '/2016/01/22/uMOgiO9.mp4'
                                 }
                             ]
                         }
@@ -65,8 +65,8 @@ describe('Entry', () => {
 
         const images = scryRenderedDOMComponentsWithTag(component, 'img')
         expect(images.length).to.equal(2)
-        expect(images[0].src).to.equal('http://localhost/content/2016/01/22/12571315_10156492193140341_1844409780_n.jpg')
-        expect(images[1].src).to.equal('http://localhost/content/2016/01/22/kreditt.png')
+        expect(images[0].src).to.equal('http://localhost/2016/01/22/12571315_10156492193140341_1844409780_n.jpg')
+        expect(images[1].src).to.equal('http://localhost/2016/01/22/kreditt.png')
     })
 
     it('renders the correct videos', () => {
@@ -85,10 +85,10 @@ describe('Entry', () => {
 
         const buttons = scryRenderedDOMComponentsWithClass(component, 'btn-primary')
         expect(buttons.length).to.equal(4)
-        expect(buttons[0].href).to.equal('http://localhost/content/2016/01/22/12571315_10156492193140341_1844409780_n.jpg')
-        expect(buttons[1].href).to.equal('http://localhost/content/2016/01/22/eUAZk6c.webm')
-        expect(buttons[2].href).to.equal('http://localhost/content/2016/01/22/kreditt.png')
-        expect(buttons[3].href).to.equal('http://localhost/content/2016/01/22/uMOgiO9.mp4')
+        expect(buttons[0].href).to.equal('http://localhost/2016/01/22/12571315_10156492193140341_1844409780_n.jpg')
+        expect(buttons[1].href).to.equal('http://localhost/2016/01/22/eUAZk6c.webm')
+        expect(buttons[2].href).to.equal('http://localhost/2016/01/22/kreditt.png')
+        expect(buttons[3].href).to.equal('http://localhost/2016/01/22/uMOgiO9.mp4')
     })
 
     it('maps state to correct props', () => {

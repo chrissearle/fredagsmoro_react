@@ -26,6 +26,10 @@ module.exports = _.assign({}, baseConfig, {
         color: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            CDN_PREFIX: JSON.stringify('https://d1fw0azbwe58up.cloudfront.net'),
+            DATA_URL: JSON.stringify('/data.json')
+        })
     ]
 });

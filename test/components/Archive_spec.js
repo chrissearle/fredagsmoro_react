@@ -31,16 +31,16 @@ describe('DisplayArchive', () => {
                             name: '22',
                             tree: [
                                 {
-                                    src: '/content/2016/01/22/12571315_10156492193140341_1844409780_n.jpg'
+                                    src: '/2016/01/22/12571315_10156492193140341_1844409780_n.jpg'
                                 },
                                 {
-                                    src: '/content/2016/01/22/eUAZk6c.webm'
+                                    src: '/2016/01/22/eUAZk6c.webm'
                                 },
                                 {
-                                    src: '/content/2016/01/22/kreditt.png'
+                                    src: '/2016/01/22/kreditt.png'
                                 },
                                 {
-                                    src: '/content/2016/01/22/uMOgiO9.mp4'
+                                    src: '/2016/01/22/uMOgiO9.mp4'
                                 }
                             ]
                         }
