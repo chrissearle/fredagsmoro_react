@@ -9,3 +9,4 @@ bundle.js
 .nyc_output
 coverage
 **/vendor/bundle
+npm-debug.log
