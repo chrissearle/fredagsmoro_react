@@ -4,6 +4,7 @@ git pull
 npm install
 npm run content:dropbox
 npm run content:data
+npm run content:datapush
 git add .
 git commit -m "New Week"
 git push
