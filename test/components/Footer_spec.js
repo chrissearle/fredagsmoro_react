@@ -36,9 +36,9 @@ describe('DisplayFooter', () => {
         )
 
         const cells =  scryRenderedDOMComponentsWithTag(component, 'div')
-        expect(cells.length).to.be.above(0)
+        expect(cells.length).to.be.above(1)
 
-        expect(cells[0].textContent).to.contain('Ba Dum Tish')
+        expect(cells[1].textContent).to.contain('Ba Dum Tish')
     })
 
     it('renders the correct images', () => {
@@ -60,12 +60,12 @@ describe('DisplayFooter', () => {
         )
 
         const cells =  scryRenderedDOMComponentsWithTag(component, 'div')
-        expect(cells.length).to.equal(5)
+        expect(cells.length).to.equal(6)
 
-        expect(cells[2].textContent).to.contain('Person 1')
-        expect(cells[2].textContent).to.contain('Period 1')
-        expect(cells[4].textContent).to.contain('Person 2')
-        expect(cells[4].textContent).to.contain('Period 2')
+        expect(cells[3].textContent).to.contain('Person 1')
+        expect(cells[3].textContent).to.contain('Period 1')
+        expect(cells[5].textContent).to.contain('Person 2')
+        expect(cells[5].textContent).to.contain('Period 2')
     })
 
     it('maps state to correct props', () => {

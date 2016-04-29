@@ -11,7 +11,8 @@ export class DisplayFooter extends PureRenderComponent {
 
     render() {
         return <footer className="footer">
-            <div className="col-md-4">
+            <div className="col-md-1"></div>
+            <div className="col-md-2">
                 <p>
                     Ba Dum Tish
                 </p>
@@ -24,7 +25,7 @@ export class DisplayFooter extends PureRenderComponent {
                                  src={`/img/${person.get('avatar')}`}/>
                         </p>
                     </div>,
-                    <div key={`${person.get('name')}2`} className="col-md-3">
+                    <div key={`${person.get('name')}2`} className="col-md-2">
                         <p>{person.get('name')}</p>
                         <p>{person.get('period')}</p>
                     </div>
